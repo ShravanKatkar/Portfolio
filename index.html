@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shravan Katkar — AI Engineer</title>
+    <meta name="description" content="Shravan Katkar — AI Engineer building RAG systems, multi-agent LLM tools and full-stack ML platforms. Pune, India.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Shravan Katkar — AI Engineer">
+    <meta property="og:description" content="RAG, multi-agent LLM systems and full-stack ML projects with live demos.">
+    <meta property="og:url" content="https://shravankatkar.github.io/Portfolio/">
+    <meta name="twitter:card" content="summary">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500&family=Space+Mono&display=swap"
@@ -20,6 +26,40 @@
             --ink: #141311;
             --accent: #C9A96E;
             --accent2: #8BA89A;
+            --sec-alt: #0E0D0B;
+            --sec-dark: #0A0908;
+            --card-bg: rgba(255, 255, 255, .018);
+            --card-border: rgba(255, 255, 255, .055);
+            --text-muted: rgba(248, 246, 242, .52);
+            --text-subtle: rgba(248, 246, 242, .38);
+            --nav-sc-bg: rgba(20, 19, 17, .82);
+            --btn-border: rgba(255, 255, 255, .12);
+            --code-bg: #100f0d;
+            --shadow-pop: rgba(0, 0, 0, .6);
+            --spotlight-color: color-mix(in srgb, var(--accent) 10%, transparent);
+        }
+
+        body.light-mode {
+            --white: #141311;
+            --off: #22201D;
+            --cream: #383530;
+            --warm: #4E4A43;
+            --mid: #68635B;
+            --dark: #D4CEBF;
+            --ink: #F7F5EF;
+            --accent: #A37628;
+            --accent2: #3E6E59;
+            --sec-alt: #EFECE2;
+            --sec-dark: #E7E3D8;
+            --card-bg: rgba(255, 255, 255, .88);
+            --card-border: rgba(20, 19, 17, .09);
+            --text-muted: rgba(20, 19, 17, .72);
+            --text-subtle: rgba(20, 19, 17, .56);
+            --nav-sc-bg: rgba(247, 245, 239, .88);
+            --btn-border: rgba(20, 19, 17, .18);
+            --code-bg: #FCFBF8;
+            --shadow-pop: rgba(20, 19, 17, .08);
+            --spotlight-color: color-mix(in srgb, var(--accent) 8%, transparent);
         }
 
         *,
@@ -41,6 +81,7 @@
             font-weight: 300;
             cursor: none;
             overflow-x: hidden;
+            transition: background .4s ease, color .4s ease;
         }
 
         a {
@@ -128,6 +169,10 @@
             overflow: hidden;
         }
 
+        body.light-mode .ld-bar-wrap {
+            background: rgba(20, 19, 17, .1);
+        }
+
         .ld-bar {
             height: 100%;
             background: linear-gradient(90deg, var(--accent), var(--accent2));
@@ -158,23 +203,29 @@
             opacity: .45;
         }
 
+        body.light-mode #pcv {
+            opacity: .28;
+        }
+
         /* NAV */
         nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            padding: 26px 60px;
+            padding: 24px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            transition: backdrop-filter .5s, background .5s;
+            transition: backdrop-filter .5s, background .5s, border-bottom .5s;
         }
 
         nav.sc {
             backdrop-filter: blur(18px);
-            background: rgba(20, 19, 17, .75);
+            -webkit-backdrop-filter: blur(18px);
+            background: var(--nav-sc-bg);
+            border-bottom: 1px solid var(--card-border);
         }
 
         .n-logo {
@@ -187,9 +238,16 @@
             -webkit-text-fill-color: transparent;
         }
 
+        .n-actions {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
         .n-links {
             display: flex;
-            gap: 36px;
+            align-items: center;
+            gap: 34px;
         }
 
         .n-links a {
@@ -215,6 +273,57 @@
 
         .n-links a:hover::before {
             clip-path: inset(0 0% 0 0);
+        }
+
+        /* THEME TOGGLE BUTTON */
+        .theme-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: transparent;
+            border: 1px solid var(--btn-border);
+            color: var(--white);
+            cursor: pointer;
+            transition: border-color .3s, transform .3s, background .3s, color .3s;
+            position: relative;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .theme-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .theme-btn svg {
+            width: 17px;
+            height: 17px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: transform .4s cubic-bezier(.16, 1, .3, 1), opacity .3s;
+        }
+
+        .theme-btn .sun-icon {
+            display: none;
+        }
+
+        .theme-btn .moon-icon {
+            display: block;
+        }
+
+        body.light-mode .theme-btn .sun-icon {
+            display: block;
+        }
+
+        body.light-mode .theme-btn .moon-icon {
+            display: none;
         }
 
         /* Hamburger Menu Button */
@@ -268,12 +377,13 @@
             padding: 0 60px 80px;
             position: relative;
             overflow: hidden;
+            background: var(--ink);
         }
 
         .h-ring {
             position: absolute;
             border-radius: 50%;
-            border: 1px solid rgba(201, 169, 110, .06);
+            border: 1px solid color-mix(in srgb, var(--accent) 10%, transparent);
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -318,6 +428,11 @@
             background-size: 200px;
             opacity: .4;
             pointer-events: none;
+        }
+
+        body.light-mode .h-noise {
+            opacity: .18;
+            filter: invert(1);
         }
 
         .h-tag {
@@ -400,9 +515,9 @@
             justify-content: center;
             width: 44px;
             height: 44px;
-            border: 1px solid rgba(255, 255, 255, .12);
+            border: 1px solid var(--btn-border);
             border-radius: 50%;
-            transition: border-color .3s, transform .3s;
+            transition: border-color .3s, transform .3s, background .3s;
         }
 
         .h-socials a:hover {
@@ -415,7 +530,12 @@
             height: 20px;
             filter: brightness(0) invert(1);
             opacity: .7;
-            transition: opacity .3s;
+            transition: opacity .3s, filter .3s;
+        }
+
+        body.light-mode .h-socials img {
+            filter: none;
+            opacity: .82;
         }
 
         .h-socials a:hover img {
@@ -462,11 +582,11 @@
             font-family: 'Space Mono', monospace;
             font-size: .52rem;
             letter-spacing: .3em;
-            color: rgba(255, 255, 255, .18);
+            color: var(--mid);
+            opacity: .6;
             display: flex;
             align-items: center;
             gap: 12px;
-            opacity: 0;
             animation: fuUp .6s 3.6s forwards;
         }
 
@@ -624,13 +744,13 @@
             align-items: center;
             gap: 10px;
             padding: 15px 30px;
-            border: 1px solid rgba(255, 255, 255, .12);
+            border: 1px solid var(--btn-border);
             color: var(--mid);
             font-family: 'Space Mono', monospace;
             font-size: .6rem;
             letter-spacing: .25em;
             text-transform: uppercase;
-            transition: border-color .3s, color .3s;
+            transition: border-color .3s, color .3s, background .3s;
         }
 
         .btn-o:hover {
@@ -659,7 +779,7 @@
             font-weight: 700;
             letter-spacing: .25em;
             text-transform: uppercase;
-            color: var(--ink);
+            color: #141311;
             padding: 0 36px;
             display: inline-flex;
             align-items: center;
@@ -704,7 +824,7 @@
             content: '';
             flex: 1;
             height: 1px;
-            background: linear-gradient(to right, rgba(201, 169, 110, .3), transparent);
+            background: linear-gradient(to right, color-mix(in srgb, var(--accent) 30%, transparent), transparent);
         }
 
         /* ABOUT */
@@ -736,7 +856,7 @@
         .ab-body {
             font-size: .97rem;
             line-height: 1.85;
-            color: rgba(248, 246, 242, .52);
+            color: var(--text-muted);
             margin-bottom: 16px;
         }
 
@@ -753,7 +873,8 @@
             letter-spacing: .2em;
             text-transform: uppercase;
             padding: 8px 16px;
-            border: 1px solid rgba(255, 255, 255, .08);
+            border: 1px solid var(--card-border);
+            background: var(--card-bg);
             color: var(--mid);
             position: relative;
             overflow: hidden;
@@ -806,14 +927,14 @@
         .p3-ov {
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, transparent 55%, rgba(201, 169, 110, .18));
+            background: linear-gradient(135deg, transparent 55%, color-mix(in srgb, var(--accent) 18%, transparent));
             pointer-events: none;
         }
 
         .p3-fr {
             position: absolute;
             inset: 12px;
-            border: 1px solid rgba(201, 169, 110, .2);
+            border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
             pointer-events: none;
         }
 
@@ -825,8 +946,8 @@
             font-size: .52rem;
             letter-spacing: .22em;
             text-transform: uppercase;
-            color: rgba(248, 246, 242, .5);
-            background: rgba(20, 19, 17, .65);
+            color: var(--text-muted);
+            background: var(--nav-sc-bg);
             backdrop-filter: blur(8px);
             padding: 6px 12px;
         }
@@ -860,12 +981,21 @@
             transition: transform 0.3s;
         }
 
+        body.light-mode .kb-board {
+            background: #252422;
+            box-shadow:
+                -1px 1px 0 #1c1b1a, -2px 2px 0 #1c1b1a,
+                -3px 3px 0 #181716, -4px 4px 0 #181716,
+                -5px 5px 0 #141312, -6px 6px 0 #141312,
+                -7px 7px 0 #100f0e, -8px 8px 0 #100f0e,
+                -20px 24px 34px rgba(0, 0, 0, 0.28),
+                inset 0 4px 8px rgba(255, 255, 255, 0.1);
+        }
+
         .kb-key {
             position: relative;
             width: 60px;
-            /* Base width */
             height: 60px;
-            /* Base height */
             transform-style: preserve-3d;
             transform: translateZ(16px);
             transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -915,7 +1045,7 @@
 
         /* SKILLS */
         #skills {
-            background: #0E0D0B;
+            background: var(--sec-alt);
         }
 
         .sk-grid {
@@ -925,8 +1055,8 @@
         }
 
         .sk-card {
-            background: rgba(255, 255, 255, .025);
-            border: 1px solid rgba(255, 255, 255, .05);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
             padding: 34px 26px;
             position: relative;
             overflow: hidden;
@@ -938,14 +1068,14 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(201, 169, 110, .07), transparent);
+            background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 7%, transparent), transparent);
             opacity: 0;
             transition: opacity .4s;
         }
 
         .sk-card:hover {
-            border-color: rgba(201, 169, 110, .22);
-            box-shadow: 0 24px 60px rgba(0, 0, 0, .55), inset 0 1px 0 rgba(201, 169, 110, .09);
+            border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+            box-shadow: 0 24px 60px var(--shadow-pop), inset 0 1px 0 color-mix(in srgb, var(--accent) 12%, transparent);
         }
 
         .sk-card:hover::before {
@@ -964,7 +1094,7 @@
             align-items: center;
             justify-content: center;
             color: var(--accent);
-            filter: drop-shadow(0 0 8px rgba(201, 169, 110, 0.3));
+            filter: drop-shadow(0 0 8px color-mix(in srgb, var(--accent) 30%, transparent));
             transition: transform 0.4s cubic-bezier(.16, 1, .3, 1), filter 0.4s;
         }
 
@@ -980,7 +1110,7 @@
 
         .sk-card:hover .sk-ico {
             transform: scale(1.15) translateY(-2px);
-            filter: drop-shadow(0 0 12px rgba(201, 169, 110, 0.7));
+            filter: drop-shadow(0 0 12px color-mix(in srgb, var(--accent) 70%, transparent));
         }
 
         .sk-ttl {
@@ -1007,15 +1137,15 @@
 
         .sk-pill {
             font-size: .76rem;
-            color: rgba(248, 246, 242, .4);
-            background: rgba(255, 255, 255, .04);
+            color: var(--text-subtle);
+            background: var(--card-border);
             padding: 4px 10px;
             border-radius: 999px;
             transition: background .3s, color .3s;
         }
 
         .sk-card:hover .sk-pill {
-            background: rgba(201, 169, 110, .1);
+            background: color-mix(in srgb, var(--accent) 12%, transparent);
             color: var(--warm);
         }
 
@@ -1045,7 +1175,7 @@
         .sk-bt {
             flex: 1;
             height: 2px;
-            background: rgba(255, 255, 255, .06);
+            background: var(--card-border);
             border-radius: 99px;
             overflow: hidden;
         }
@@ -1070,12 +1200,13 @@
         }
 
         .pr-card {
-            background: rgba(255, 255, 255, .018);
-            border: 1px solid rgba(255, 255, 255, .055);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
             padding: 46px 38px;
             position: relative;
             overflow: hidden;
             transition: box-shadow .4s, border-color .4s;
+            background-image: radial-gradient(380px circle at var(--mx, 50%) var(--my, -60%), var(--spotlight-color), transparent 65%);
         }
 
         .pr-card::after {
@@ -1095,27 +1226,27 @@
         }
 
         .pr-card:hover {
-            border-color: rgba(201, 169, 110, .16);
-            box-shadow: 0 32px 80px rgba(0, 0, 0, .6);
+            border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+            box-shadow: 0 20px 60px var(--shadow-pop);
         }
 
         .highlight-proj {
-            border-color: rgba(201, 169, 110, 0.8) !important;
-            box-shadow: 0 0 50px rgba(201, 169, 110, 0.25), inset 0 0 20px rgba(201, 169, 110, 0.1) !important;
+            border-color: color-mix(in srgb, var(--accent) 80%, transparent) !important;
+            box-shadow: 0 0 50px color-mix(in srgb, var(--accent) 25%, transparent), inset 0 0 20px color-mix(in srgb, var(--accent) 10%, transparent) !important;
             transform: translateY(-8px) !important;
             z-index: 10;
         }
 
         .hero-proj:hover {
-            border-color: rgba(201, 169, 110, 0.5) !important;
-            box-shadow: 0 0 35px rgba(201, 169, 110, 0.2), inset 0 0 15px rgba(201, 169, 110, 0.08), 0 32px 80px rgba(0, 0, 0, .6) !important;
+            border-color: color-mix(in srgb, var(--accent) 55%, transparent) !important;
+            box-shadow: 0 0 35px color-mix(in srgb, var(--accent) 22%, transparent), inset 0 0 15px color-mix(in srgb, var(--accent) 8%, transparent), 0 32px 80px var(--shadow-pop) !important;
         }
         
         .hero-badge {
             display: inline-block;
             font-family: 'Space Mono', monospace;
             font-size: 0.5rem;
-            color: var(--ink);
+            color: #141311;
             background: var(--accent);
             padding: 3px 8px;
             letter-spacing: 0.15em;
@@ -1127,7 +1258,7 @@
         }
 
         .ptag.highlight-tag {
-            background: rgba(201, 169, 110, 0.2);
+            background: color-mix(in srgb, var(--accent) 20%, transparent);
             color: var(--white);
             border-color: var(--accent);
         }
@@ -1136,7 +1267,7 @@
             font-family: 'Syne', sans-serif;
             font-size: 4.5rem;
             font-weight: 800;
-            color: rgba(255, 255, 255, .035);
+            color: color-mix(in srgb, var(--white) 5%, transparent);
             line-height: 1;
             letter-spacing: -.04em;
             position: absolute;
@@ -1146,7 +1277,7 @@
         }
 
         .pr-card:hover .pr-num {
-            color: rgba(201, 169, 110, .07);
+            color: color-mix(in srgb, var(--accent) 12%, transparent);
         }
 
         .pr-yr {
@@ -1170,7 +1301,7 @@
         .pr-desc {
             font-size: .88rem;
             line-height: 1.75;
-            color: rgba(248, 246, 242, .42);
+            color: var(--text-muted);
             margin-bottom: 22px;
         }
 
@@ -1184,7 +1315,7 @@
 
         .pr-feats li {
             font-size: .83rem;
-            color: rgba(248, 246, 242, .38);
+            color: var(--text-subtle);
             padding-left: 16px;
             position: relative;
             line-height: 1.5;
@@ -1211,13 +1342,14 @@
             letter-spacing: .15em;
             text-transform: uppercase;
             color: var(--mid);
-            border: 1px solid rgba(255, 255, 255, .07);
+            border: 1px solid var(--card-border);
+            background: var(--card-bg);
             padding: 5px 11px;
-            transition: border-color .3s, color .3s;
+            transition: border-color .3s, color .3s, background .3s;
         }
 
         .pr-card:hover .ptag {
-            border-color: rgba(201, 169, 110, .2);
+            border-color: color-mix(in srgb, var(--accent) 25%, transparent);
             color: var(--warm);
         }
 
@@ -1243,7 +1375,7 @@
 
         /* CERTIFICATIONS */
         #certs {
-            background: #0E0D0B;
+            background: var(--sec-alt);
         }
 
         .certs-grid {
@@ -1253,8 +1385,8 @@
         }
 
         .cert-card {
-            background: rgba(255, 255, 255, .018);
-            border: 1px solid rgba(255, 255, 255, .055);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
             padding: 24px;
             position: relative;
             overflow: hidden;
@@ -1265,25 +1397,31 @@
         }
 
         .cert-card:hover {
-            border-color: rgba(201, 169, 110, .25);
-            box-shadow: 0 24px 60px rgba(0, 0, 0, .55);
+            border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+            box-shadow: 0 24px 60px var(--shadow-pop);
             transform: translateY(-5px);
         }
 
         .cert-img-wrap {
             width: 100%;
-            height: 200px;
+            height: 220px;
             overflow: hidden;
             position: relative;
-            border: 1px solid rgba(255, 255, 255, .05);
+            border: 1px solid var(--card-border);
             cursor: pointer;
+            background: var(--code-bg);
         }
 
         .cert-img-wrap img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transition: transform .6s cubic-bezier(.16, 1, .3, 1);
+            object-fit: contain;
+            filter: brightness(.86);
+            transition: transform .6s cubic-bezier(.16, 1, .3, 1), filter .4s;
+        }
+
+        body.light-mode .cert-img-wrap img {
+            filter: brightness(1);
         }
 
         .cert-card:hover .cert-img-wrap img {
@@ -1314,7 +1452,7 @@
 
         .cert-meta {
             font-size: .8rem;
-            color: rgba(248, 246, 242, .4);
+            color: var(--text-subtle);
             display: flex;
             flex-direction: column;
             gap: 4px;
@@ -1383,7 +1521,7 @@
 
         /* CONTACT */
         #contact {
-            background: #0A0908;
+            background: var(--sec-dark);
             position: relative;
             overflow: hidden;
             padding: 130px 60px;
@@ -1395,7 +1533,7 @@
             width: 560px;
             height: 560px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(201, 169, 110, .09) 0%, transparent 70%);
+            background: radial-gradient(circle, color-mix(in srgb, var(--accent) 9%, transparent) 0%, transparent 70%);
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -1466,7 +1604,8 @@
             align-items: center;
             gap: 12px;
             padding: 18px 32px;
-            border: 1px solid rgba(255, 255, 255, .08);
+            border: 1px solid var(--card-border);
+            background: var(--card-bg);
             color: var(--mid);
             font-family: 'Space Mono', monospace;
             font-size: .6rem;
@@ -1481,7 +1620,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(135deg, rgba(201, 169, 110, .11), transparent);
+            background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 11%, transparent), transparent);
             opacity: 0;
             transition: opacity .4s;
         }
@@ -1497,8 +1636,8 @@
 
         /* FOOTER */
         footer {
-            background: #0A0908;
-            border-top: 1px solid rgba(255, 255, 255, .045);
+            background: var(--sec-dark);
+            border-top: 1px solid var(--card-border);
             padding: 24px 60px;
             display: flex;
             justify-content: space-between;
@@ -1518,7 +1657,8 @@
             font-family: 'Space Mono', monospace;
             font-size: .52rem;
             letter-spacing: .18em;
-            color: rgba(255, 255, 255, .14);
+            color: var(--mid);
+            opacity: .6;
         }
 
         /* REVEAL */
@@ -1585,6 +1725,10 @@
                 padding: 18px 22px;
             }
 
+            .n-actions {
+                gap: 16px;
+            }
+
             #menu-toggle {
                 display: flex;
             }
@@ -1595,7 +1739,7 @@
                 right: 0;
                 bottom: 0;
                 left: 0;
-                background: rgba(10, 9, 8, 0.98);
+                background: var(--nav-sc-bg);
                 backdrop-filter: blur(25px);
                 -webkit-backdrop-filter: blur(25px);
                 flex-direction: column;
@@ -1688,6 +1832,62 @@
                 cursor: auto;
             }
         }
+
+        /* ─── REFINEMENTS ─── */
+        section { scroll-margin-top: 80px; }
+        .h-stats { top: 44%; }
+        .h-scroll { bottom: 40px; }
+        .pr-metrics { display: flex; gap: 34px; flex-wrap: wrap; list-style: none; margin: 4px 0 22px; }
+        .pr-metrics b { display: block; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.35rem; color: var(--accent); line-height: 1.2; }
+        .pr-metrics span { font-family: 'Space Mono', monospace; font-size: .55rem; letter-spacing: .14em; text-transform: uppercase; color: var(--mid); }
+        .pr-note { align-self: center; font-family: 'Space Mono', monospace; font-size: .55rem; letter-spacing: .06em; color: var(--mid); }
+        .full-w > .pr-feats { columns: 2; column-gap: 48px; }
+        .full-w > .pr-feats li { break-inside: avoid; }
+        .hero-proj .pr-feats-grid { grid-template-columns: 1fr; }
+        .sk-used { display: grid; gap: 14px; }
+        .sk-used div { display: grid; grid-template-columns: 8.5rem 1fr; gap: 16px; align-items: baseline; padding-bottom: 14px; border-bottom: 1px solid var(--card-border); }
+        .sk-used span { font-family: 'Space Mono', monospace; font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+        .sk-used small { font-size: .85rem; color: var(--mid); line-height: 1.5; }
+        .ct-card svg { width: 16px; height: 16px; flex: none; fill: none; stroke: var(--accent); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+        .ct-card[href^="mailto:"], .ct-card[href^="tel:"] { text-transform: none; letter-spacing: .06em; }
+        @media (hover: none) { body { cursor: auto; } [id^="cur-"] { display: none; } }
+        @media (prefers-reduced-motion: reduce) { .mq-track { animation: none; } html { scroll-behavior: auto; } }
+        @media (max-width: 700px) { .full-w > .pr-feats { columns: 1; } .sk-used div { grid-template-columns: 1fr; gap: 4px; } }
+        
+        /* ─── LIVE PIPELINE ─── */
+        #live { background: var(--sec-alt); }
+        .pl { display: flex; flex-wrap: wrap; margin-top: 8px; }
+        .pl small { display: block; font-family: 'Space Mono', monospace; font-size: .58rem; letter-spacing: .14em; color: var(--mid); text-transform: uppercase; }
+        .pl-q, .pl-out { flex: 1 1 100%; padding: 24px 28px; border: 1px solid var(--card-border); background: var(--card-bg); }
+        .pl-q { border-bottom: 0; } .pl-out { border-top: 0; min-height: 132px; }
+        .pl-q small, .pl-out small { margin-bottom: 10px; }
+        #plq { font-family: 'Space Mono', monospace; font-size: 1.05rem; color: var(--white); }
+        #plq::after { content: '▌'; color: var(--accent); animation: plBlink 1s steps(1) infinite; }
+        .pl-step { flex: 1 1 200px; padding: 24px; margin-left: -1px; border: 1px solid var(--card-border); background: var(--card-bg); opacity: .4; transition: opacity .5s, border-color .5s, background .5s; }
+        .pl-step.on { opacity: 1; border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, transparent); position: relative; z-index: 1; }
+        .pl-step em { font: normal 700 .7rem 'Space Mono', monospace; color: var(--accent); }
+        .pl-step b { display: block; font: 700 1.2rem 'Syne', sans-serif; margin: 8px 0 6px; }
+        .pl-cells { display: grid; grid-template-columns: repeat(8, 1fr); gap: 4px; margin-top: 16px; }
+        .pl-cells i { aspect-ratio: 1; background: var(--card-border); transition: background .4s, box-shadow .4s; }
+        .pl-cells i.hit { background: var(--accent); box-shadow: 0 0 14px var(--accent); }
+        #plo { font-size: 1.35rem; line-height: 1.5; max-width: 62ch; color: var(--white); }
+        @keyframes plBlink { 50% { opacity: 0; } }
+        
+        /* ─── TERMINAL ─── */
+        #tm-fab { position: fixed; right: 24px; bottom: 24px; z-index: 950; padding: 13px 18px; font: .62rem 'Space Mono', monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); background: var(--nav-sc-bg); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid var(--accent); animation: tmPulse 2.8s infinite; cursor: pointer; border-radius: 4px; }
+        @keyframes tmPulse { 0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 45%, transparent); } 60% { box-shadow: 0 0 0 12px color-mix(in srgb, var(--accent) 0%, transparent); } }
+        #tm { position: fixed; right: 24px; bottom: 78px; z-index: 960; width: min(440px, calc(100vw - 32px)); height: 400px; display: flex; flex-direction: column; background: var(--code-bg); border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent); box-shadow: 0 30px 70px var(--shadow-pop); font: .68rem/1.65 'Space Mono', monospace; color: var(--warm); border-radius: 8px; overflow: hidden; }
+        #tm[hidden] { display: none; }
+        .tm-h { display: flex; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid var(--card-border); color: var(--accent); }
+        .tm-h button { background: none; border: 0; color: var(--mid); font-size: 1.1rem; cursor: pointer; }
+        #tm-log { flex: 1; overflow-y: auto; padding: 14px; }
+        #tm-log p { margin-bottom: 8px; } #tm-log a { color: var(--accent); border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, transparent); } #tm-log .u { color: var(--white); } #tm-log b { color: var(--white); font-weight: 600; }
+        .tm-chips { display: flex; gap: 6px; flex-wrap: wrap; padding: 0 14px 10px; }
+        .tm-chips button { font: inherit; padding: 3px 9px; background: none; color: var(--mid); border: 1px solid var(--card-border); cursor: pointer; border-radius: 3px; }
+        .tm-chips button:hover { color: var(--accent); border-color: var(--accent); }
+        .tm-in { display: flex; gap: 8px; padding: 12px 14px; border-top: 1px solid var(--card-border); color: var(--accent); }
+        .tm-in input { flex: 1; background: none; border: 0; outline: 0; color: var(--white); font: inherit; }
+        @media (prefers-reduced-motion: reduce) { #tm-fab, #plq::after { animation: none; } }
     </style>
 </head>
 
@@ -1715,19 +1915,26 @@
     <!-- NAV -->
     <nav id="mnav">
         <a class="n-logo" href="#">SK.DEV</a>
-        <div class="n-links">
-            <a href="#about" data-t="About">About</a>
-            <a href="#skills" data-t="Skills">Skills</a>
-            <a href="#projects" data-t="Work">Work</a>
-            <a href="#certs" data-t="Certifications">Certifications</a>
-            <a href="#contact" data-t="Contact">Contact</a>
+        <div class="n-actions">
+            <div class="n-links">
+                <a href="#about" data-t="About">About</a>
+                <a href="#skills" data-t="Skills">Skills</a>
+                <a href="#projects" data-t="Work">Work</a>
+                <a href="#certs" data-t="Certifications">Certifications</a>
+                <a href="#contact" data-t="Contact">Contact</a>
+            </div>
+            <!-- Theme Toggle Button -->
+            <button id="theme-toggle" class="theme-btn" aria-label="Toggle Light/Dark Theme" title="Toggle theme">
+                <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            </button>
+            <!-- Hamburger Menu Button -->
+            <button id="menu-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-        <!-- Hamburger Menu Button -->
-        <button id="menu-toggle" aria-label="Toggle Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
     </nav>
 
     <!-- HERO -->
@@ -1746,8 +1953,8 @@
                 <div class="hs-lbl">Languages</div>
             </div>
             <div>
-                <div class="hs-num">AI</div>
-                <div class="hs-lbl">Speciality</div>
+                <div class="hs-num">6</div>
+                <div class="hs-lbl">Live demos</div>
             </div>
         </div>
         <div class="h-tag">AI Engineer &amp; ML Specialist</div>
@@ -1761,7 +1968,7 @@
             <a class="btn-p mag" href="#projects">
                 <div class="bf"></div><span>View My Work</span><span>→</span>
             </a>
-            <a class="btn-o" href="https://mail.google.com/mail/?view=cm&fs=1&to=shravankatkar818@gmail.com"
+            <a class="btn-o" href="mailto:shravankatkar818@gmail.com?subject=Opportunity%20for%20Shravan"
                 target="_blank" rel="noopener noreferrer">Get In Touch</a>
             <a class="btn-o" href="resume.pdf" download>Download Resume</a>
         </div>
@@ -1793,6 +2000,20 @@
                 Models</span><span class="mq-item">PyTorch</span>
         </div>
     </div>
+
+    <!-- LIVE PIPELINE -->
+    <section id="live" class="sec">
+        <div class="sec-lbl rev">Live — Under the hood</div>
+        <div class="pl rev">
+            <div class="pl-q"><small>query</small><span id="plq"></span></div>
+            <div class="pl-step"><em>1</em><b>Embed</b><small>query → vector</small></div>
+            <div class="pl-step"><em>2</em><b>Retrieve</b><small>top-k chunks, vector DB</small>
+                <div class="pl-cells"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+            <div class="pl-step"><em>3</em><b>Rerank</b><small>RRF + MMR fusion</small></div>
+            <div class="pl-step"><em>4</em><b>Generate</b><small>grounded in retrieved context</small></div>
+            <div class="pl-out"><small>answer</small><p id="plo"></p></div>
+        </div>
+    </section>
 
     <!-- ABOUT -->
     <section id="about" class="sec">
@@ -1939,34 +2160,14 @@
                         <line x1="12" y1="20" x2="12" y2="4"></line>
                         <line x1="6" y1="20" x2="6" y2="14"></line>
                     </svg></span>
-                <div class="sk-ttl">Proficiency Levels</div>
-                <div class="sk-sub">Self-assessed expertise</div>
-                <div class="sk-bars">
-                    <div class="sk-br"><span class="sk-bn">Python</span>
-                        <div class="sk-bt">
-                            <div class="sk-bf" data-w="92"></div>
-                        </div>
-                    </div>
-                    <div class="sk-br"><span class="sk-bn">Gen AI</span>
-                        <div class="sk-bt">
-                            <div class="sk-bf" data-w="88"></div>
-                        </div>
-                    </div>
-                    <div class="sk-br"><span class="sk-bn">NLP</span>
-                        <div class="sk-bt">
-                            <div class="sk-bf" data-w="83"></div>
-                        </div>
-                    </div>
-                    <div class="sk-br"><span class="sk-bn">Deep Learning</span>
-                        <div class="sk-bt">
-                            <div class="sk-bf" data-w="79"></div>
-                        </div>
-                    </div>
-                    <div class="sk-br"><span class="sk-bn">FastAPI</span>
-                        <div class="sk-bt">
-                            <div class="sk-bf" data-w="86"></div>
-                        </div>
-                    </div>
+                <div class="sk-ttl">Where I've used it</div>
+                <div class="sk-sub">Across shipped projects</div>
+                <div class="sk-used">
+                    <div><span>Python</span><small>CodeGuard · CineSense · VaultAI · ALIAS · CivicMind · NeuroPersona</small></div>
+                    <div><span>RAG &amp; LLMs</span><small>CodeGuard · CineSense · VaultAI · CivicMind · ALIAS</small></div>
+                    <div><span>Deep learning</span><small>CodeGuard (QLoRA) · CivicMind (BLIP) · NeuroPersona (LSTM)</small></div>
+                    <div><span>FastAPI</span><small>CodeGuard · CineSense · VaultAI · TransitAI · CivicMind · ALIAS</small></div>
+                    <div><span>React</span><small>CineSense · VaultAI · TransitAI · ALIAS · IronFit</small></div>
                 </div>
             </div>
             <div class="sk-card tc rev" data-d="5">
@@ -1989,10 +2190,104 @@
         <div class="sec-lbl rev">02 — Selected Work</div>
         <div class="pr-grid">
 
-            <!-- 01 ALIAS -->
+            <!-- 01 CodeGuard -->
             <div class="pr-card rev full-w" data-d="1">
                 <div class="pr-num">01</div>
                 <div class="hero-badge">Flagship Project</div>
+                <div class="pr-yr">July 2026</div>
+                <h3 class="pr-ttl">CodeGuard — Autonomous Multi-Agent Code Review System</h3>
+                <p class="pr-desc">An autonomous multi-agent AI system designed to review GitHub Pull Requests like a senior engineering team, featuring LangGraph state routing and a fine-tuned vulnerability detection agent.</p>
+                <ul class="pr-metrics"><li><b>+2.3%</b><span>vulnerability detection</span></li><li><b>61%</b><span>lower latency</span></li><li><b>4</b><span>review agents</span></li></ul>
+                <ul class="pr-feats">
+                    <li>Dynamic parallel state routing via LangGraph coordinating Planner, Security, Architecture RAG, and Refactor reviewers.</li>
+                    <li>Fine-tuned QLoRA Security Agent (Llama 3.1 8B) delivering +2.3% vulnerability detection and 61% lower latency over base models.</li>
+                    <li>Codebase RAG layer indexing AST function/class definitions for deep contextual semantic retrieval.</li>
+                    <li>Interactive Streamlit dashboard visualizing PR metrics, vulnerability breakdowns, and base vs. fine-tuned benchmark comparisons.</li>
+                    <li>Containerized Docker action posting structured review comments directly to GitHub PRs.</li>
+                </ul>
+                <div class="pr-tags">
+                    <span class="ptag">Python</span>
+                    <span class="ptag">LangGraph</span>
+                    <span class="ptag">LangChain</span>
+                    <span class="ptag">PyTorch</span>
+                    <span class="ptag">RAG</span>
+                    <span class="ptag">Streamlit</span>
+                    <span class="ptag">Docker</span>
+                    <span class="ptag">LLM APIs</span>
+                </div>
+                <div style="display: flex; gap: 18px; flex-wrap: wrap;">
+                    <a class="pr-lnk" href="https://codeguard-bm3d38xaaeqhvxppuhcbgv.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo <span>↗</span></a>
+                    <a class="pr-lnk" href="https://github.com/ShravanKatkar/CodeGuard" target="_blank" rel="noopener noreferrer">Source Code <span>→</span></a>
+                </div>
+            </div>
+
+            <!-- 02 CineSense -->
+            <div class="pr-card rev hero-proj" data-d="2">
+                <div class="pr-num">02</div>
+                <div class="hero-badge">Featured Project</div>
+                <div class="pr-yr">September 2026</div>
+                <h3 class="pr-ttl">CineSense — Enterprise Hybrid AI Movie Recommendation &amp; Grounded RAG Assistant</h3>
+                <p class="pr-desc">A full-stack, production-grade cinema intelligence platform over 10,000+ titles featuring a 2-stage hybrid recommendation pipeline (5 algorithmic tiers fused via RRF &amp; MMR) coupled with an autonomous ReAct AI Agent with a 0% hallucination guarantee.</p>
+                <ul class="pr-metrics"><li><b>10K+</b><span>titles</span></li><li><b>5</b><span>ranking tiers</span></li><li><b>64</b><span>latent factors</span></li></ul>
+                <ul class="pr-feats">
+                    <li>Two-stage recsys: ALS Matrix Factorization (64 latent factors), Item-Item CF, Neural Semantic Embeddings (kNN), TF-IDF, and Bayesian Popularity.</li>
+                    <li>Candidate ranking fused via RRF and diversified with Maximal Marginal Relevance (MMR).</li>
+                    <li>Autonomous ReAct agent powered by Groq Llama 3.3 70B with candidate whitelist grounding.</li>
+                    <li>Dual-tier caching with Redis 7 &amp; in-memory TTL plus live telemetry feedback loop.</li>
+                    <li>Built with React 19, Vite, Tailwind CSS, FastAPI Python 3.12, and PostgreSQL 16 + pgvector.</li>
+                </ul>
+                <div class="pr-tags">
+                    <span class="ptag">FastAPI</span>
+                    <span class="ptag">React</span>
+                    <span class="ptag">Python</span>
+                    <span class="ptag">PostgreSQL</span>
+                    <span class="ptag">Vector DBs</span>
+                    <span class="ptag">Redis</span>
+                    <span class="ptag">Groq</span>
+                    <span class="ptag">LangChain</span>
+                    <span class="ptag">RAG</span>
+                    <span class="ptag">Docker</span>
+                </div>
+                <div style="display: flex; gap: 18px; flex-wrap: wrap;">
+                    <a class="pr-lnk" href="https://cinesense-app.onrender.com/" target="_blank" rel="noopener noreferrer">Live Demo <span>↗</span></a>
+                    <span class="pr-note">Server may take a minute to wake on first visit</span>
+                    <a class="pr-lnk" href="https://github.com/ShravanKatkar/CineSense" target="_blank" rel="noopener noreferrer">Source Code <span>→</span></a>
+                </div>
+            </div>
+
+            <!-- 03 VaultAI -->
+            <div class="pr-card rev hero-proj" data-d="3">
+                <div class="pr-num">03</div>
+                <div class="hero-badge">Featured Project</div>
+                <div class="pr-yr">June 2026</div>
+                <h3 class="pr-ttl">VaultAI — Offline AI Document Intelligence Suite</h3>
+                <p class="pr-desc">A production-grade, privacy-first Retrieval-Augmented Generation (RAG) platform that enables users to chat with local documents using open-source LLMs running entirely offline. Built with FastAPI, React, LangChain, ChromaDB, and Ollama.</p>
+                <ul class="pr-metrics"><li><b>100%</b><span>offline</span></li><li><b>3</b><span>local LLMs</span></li><li><b>PDF · TXT · MD</b><span>ingestion</span></li></ul>
+                <ul class="pr-feats">
+                    <li>100% offline AI assistant with complete on-device processing and zero cloud dependencies.</li>
+                    <li>Intelligent document ingestion for PDF, TXT, and Markdown files with automatic chunking and vector embeddings.</li>
+                    <li>Real-time streaming RAG chat powered by LangChain, ChromaDB, and local Ollama models.</li>
+                    <li>Dynamic local model discovery with support for multiple LLMs, including Llama 3, Phi-3, and Mistral.</li>
+                    <li>Evaluation dashboard monitoring retrieval accuracy, response quality, and latency.</li>
+                </ul>
+                <div class="pr-tags">
+                    <span class="ptag">FastAPI</span>
+                    <span class="ptag">React</span>
+                    <span class="ptag">LangChain</span>
+                    <span class="ptag">Vector DBs</span>
+                    <span class="ptag">ChromaDB</span>
+                    <span class="ptag">Ollama</span>
+                    <span class="ptag">RAG</span>
+                    <span class="ptag">Docker</span>
+                    <span class="ptag">Python</span>
+                </div>
+                <a class="pr-lnk" href="https://vault-ai-gamma.vercel.app/" target="_blank" rel="noopener noreferrer">Live Demo <span>↗</span></a>
+            </div>
+
+            <!-- 04 ALIAS -->
+            <div class="pr-card rev hero-proj" data-d="4">
+                <div class="pr-num">04</div>
+                <div class="hero-badge">Desktop Assistant</div>
                 <div class="pr-yr">October 2025</div>
                 <h3 class="pr-ttl">A.L.I.A.S. — Advanced Logical Interface &amp; Assistant System</h3>
                 <p class="pr-desc">A powerful, voice-activated AI desktop assistant running natively on Windows via Electron and a local FastAPI backend. Engineered with multi-model intelligence, persistent long-term memory, real-time system automation, and context-aware active window intelligence.</p>
@@ -2022,72 +2317,31 @@
                 <a class="pr-lnk" href="https://github.com/ShravanKatkar/A.L.I.A.S.---Advanced-Logical-Interface-and-Assistant-System" target="_blank" rel="noopener noreferrer">View on GitHub <span>→</span></a>
             </div>
 
-            <!-- 02 CineSense -->
-            <div class="pr-card rev hero-proj" data-d="2">
-                <div class="pr-num">02</div>
-                <div class="hero-badge">Hero Project</div>
-                <div class="pr-yr">September 2026</div>
-                <h3 class="pr-ttl">CineSense — Enterprise Hybrid AI Movie Recommendation &amp; Grounded RAG Assistant</h3>
-                <p class="pr-desc">A full-stack, production-grade cinema intelligence platform over 10,000+ titles featuring a 2-stage hybrid recommendation pipeline (5 algorithmic tiers fused via RRF &amp; MMR) coupled with an autonomous ReAct AI Agent with a 0% hallucination guarantee.</p>
+            <!-- 05 CivicMind AI -->
+            <div class="pr-card rev hero-proj" data-d="5">
+                <div class="pr-num">05</div>
+                <div class="hero-badge">Computer Vision</div>
+                <div class="pr-yr">January 2026</div>
+                <h3 class="pr-ttl">CivicMind AI — Safety Platform</h3>
+                <p class="pr-desc">AI-driven safety monitoring platform detecting hazards for sanitation workers using computer vision.</p>
                 <ul class="pr-feats">
-                    <li>Two-stage recsys: ALS Matrix Factorization (64 latent factors), Item-Item CF, Neural Semantic Embeddings (kNN), TF-IDF, and Bayesian Popularity.</li>
-                    <li>Candidate ranking fused via RRF and diversified with Maximal Marginal Relevance (MMR).</li>
-                    <li>Autonomous ReAct agent powered by Groq Llama 3.3 70B with candidate whitelist grounding.</li>
-                    <li>Dual-tier caching with Redis 7 &amp; in-memory TTL plus live telemetry feedback loop.</li>
-                    <li>Built with React 19, Vite, Tailwind CSS, FastAPI Python 3.12, and PostgreSQL 16 + pgvector.</li>
+                    <li>Real-time detection across 7 risk categories</li>
+                    <li>BLIP models + custom logic engine</li>
+                    <li>Voice-based on-site hazard reporting</li>
+                    <li>RAG for contextual safety recommendations</li>
+                    <li>Mobile-accessible local network deployment</li>
                 </ul>
-                <div class="pr-tags">
-                    <span class="ptag">FastAPI</span>
-                    <span class="ptag">React</span>
-                    <span class="ptag">Python</span>
-                    <span class="ptag">PostgreSQL</span>
-                    <span class="ptag">Vector DBs</span>
-                    <span class="ptag">Redis</span>
-                    <span class="ptag">Groq</span>
-                    <span class="ptag">LangChain</span>
-                    <span class="ptag">RAG</span>
-                    <span class="ptag">Docker</span>
-                </div>
-                <div style="display: flex; gap: 18px; flex-wrap: wrap;">
-                    <a class="pr-lnk" href="https://cinesense-app.onrender.com/" target="_blank" rel="noopener noreferrer">Live Demo <span>↗</span></a>
-                    <a class="pr-lnk" href="https://github.com/ShravanKatkar/CineSense" target="_blank" rel="noopener noreferrer">Source Code <span>→</span></a>
-                </div>
+                <div class="pr-tags"><span class="ptag">PyTorch</span><span class="ptag">C++</span><span
+                        class="ptag">BLIP</span><span class="ptag">LangChain</span><span
+                        class="ptag">HuggingFace</span><span class="ptag">AWS</span><span class="ptag">Vector
+                        DBs</span><span class="ptag">FastAPI</span><span class="ptag">React</span></div>
+                <a class="pr-lnk" href="https://civic-mind-9uve.vercel.app/" target="_blank" rel="noopener noreferrer">Live Demo <span>↗</span></a>
             </div>
 
-            <!-- 03 CodeGuard -->
-            <div class="pr-card rev hero-proj" data-d="3">
-                <div class="pr-num">03</div>
-                <div class="hero-badge">Hero Project</div>
-                <div class="pr-yr">July 2026</div>
-                <h3 class="pr-ttl">CodeGuard — Autonomous Multi-Agent Code Review System</h3>
-                <p class="pr-desc">An autonomous multi-agent AI system designed to review GitHub Pull Requests like a senior engineering team, featuring LangGraph state routing and a fine-tuned vulnerability detection agent.</p>
-                <ul class="pr-feats">
-                    <li>Dynamic parallel state routing via LangGraph coordinating Planner, Security, Architecture RAG, and Refactor reviewers.</li>
-                    <li>Fine-tuned QLoRA Security Agent (Llama 3.1 8B) delivering +2.3% vulnerability detection and 61% lower latency over base models.</li>
-                    <li>Codebase RAG layer indexing AST function/class definitions for deep contextual semantic retrieval.</li>
-                    <li>Interactive Streamlit dashboard visualizing PR metrics, vulnerability breakdowns, and base vs. fine-tuned benchmark comparisons.</li>
-                    <li>Containerized Docker action posting structured review comments directly to GitHub PRs.</li>
-                </ul>
-                <div class="pr-tags">
-                    <span class="ptag">Python</span>
-                    <span class="ptag">LangGraph</span>
-                    <span class="ptag">LangChain</span>
-                    <span class="ptag">PyTorch</span>
-                    <span class="ptag">RAG</span>
-                    <span class="ptag">Streamlit</span>
-                    <span class="ptag">Docker</span>
-                    <span class="ptag">LLM APIs</span>
-                </div>
-                <div style="display: flex; gap: 18px; flex-wrap: wrap;">
-                    <a class="pr-lnk" href="https://codeguard-bm3d38xaaeqhvxppuhcbgv.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo <span>↗</span></a>
-                    <a class="pr-lnk" href="https://github.com/ShravanKatkar/CodeGuard" target="_blank" rel="noopener noreferrer">Source Code <span>→</span></a>
-                </div>
-            </div>
-
-            <!-- 04 TransitAI -->
-            <div class="pr-card rev hero-proj" data-d="4">
-                <div class="pr-num">04</div>
-                <div class="hero-badge">Hero Project</div>
+            <!-- 06 TransitAI -->
+            <div class="pr-card rev hero-proj" data-d="6">
+                <div class="pr-num">06</div>
+                <div class="hero-badge">Full-stack ML</div>
                 <div class="pr-yr">2026</div>
                 <h3 class="pr-ttl">TransitAI — Distributed Transit &amp; Real-Time Fleet Platform</h3>
                 <p class="pr-desc">A production-ready distributed intelligent public transit platform featuring microservices for live fleet telemetry, ML-driven ETA &amp; crowd forecasting, automated digital pass issuing, and fraud prevention.</p>
@@ -2112,59 +2366,10 @@
                 <a class="pr-lnk" href="https://github.com/ShravanKatkar/TransitAI" target="_blank" rel="noopener noreferrer">View on GitHub <span>→</span></a>
             </div>
 
-            <!-- 05 VaultAI -->
-            <div class="pr-card rev hero-proj" data-d="5">
-                <div class="pr-num">05</div>
-                <div class="hero-badge">Hero Project</div>
-                <div class="pr-yr">June 2026</div>
-                <h3 class="pr-ttl">VaultAI — Offline AI Document Intelligence Suite</h3>
-                <p class="pr-desc">A production-grade, privacy-first Retrieval-Augmented Generation (RAG) platform that enables users to chat with local documents using open-source LLMs running entirely offline. Built with FastAPI, React, LangChain, ChromaDB, and Ollama.</p>
-                <ul class="pr-feats">
-                    <li>100% offline AI assistant with complete on-device processing and zero cloud dependencies.</li>
-                    <li>Intelligent document ingestion for PDF, TXT, and Markdown files with automatic chunking and vector embeddings.</li>
-                    <li>Real-time streaming RAG chat powered by LangChain, ChromaDB, and local Ollama models.</li>
-                    <li>Dynamic local model discovery with support for multiple LLMs, including Llama 3, Phi-3, and Mistral.</li>
-                    <li>Evaluation dashboard monitoring retrieval accuracy, response quality, and latency.</li>
-                </ul>
-                <div class="pr-tags">
-                    <span class="ptag">FastAPI</span>
-                    <span class="ptag">React</span>
-                    <span class="ptag">LangChain</span>
-                    <span class="ptag">Vector DBs</span>
-                    <span class="ptag">ChromaDB</span>
-                    <span class="ptag">Ollama</span>
-                    <span class="ptag">RAG</span>
-                    <span class="ptag">Docker</span>
-                    <span class="ptag">Python</span>
-                </div>
-                <a class="pr-lnk" href="https://vault-ai-gamma.vercel.app/" target="_blank" rel="noopener noreferrer">Live Demo <span>↗</span></a>
-            </div>
-
-            <!-- 06 CivicMind AI -->
-            <div class="pr-card rev hero-proj" data-d="6">
-                <div class="pr-num">06</div>
-                <div class="hero-badge">Hero Project</div>
-                <div class="pr-yr">January 2026</div>
-                <h3 class="pr-ttl">CivicMind AI — Safety Platform</h3>
-                <p class="pr-desc">AI-driven safety monitoring platform detecting hazards for sanitation workers using computer vision.</p>
-                <ul class="pr-feats">
-                    <li>Real-time detection across 7 risk categories</li>
-                    <li>BLIP models + custom logic engine</li>
-                    <li>Voice-based on-site hazard reporting</li>
-                    <li>RAG for contextual safety recommendations</li>
-                    <li>Mobile-accessible local network deployment</li>
-                </ul>
-                <div class="pr-tags"><span class="ptag">PyTorch</span><span class="ptag">C++</span><span
-                        class="ptag">BLIP</span><span class="ptag">LangChain</span><span
-                        class="ptag">HuggingFace</span><span class="ptag">AWS</span><span class="ptag">Vector
-                        DBs</span><span class="ptag">FastAPI</span><span class="ptag">React</span></div>
-                <a class="pr-lnk" href="https://civic-mind-9uve.vercel.app/" target="_blank" rel="noopener noreferrer">Live Demo <span>↗</span></a>
-            </div>
-
             <!-- 07 NeuroPersona -->
             <div class="pr-card rev hero-proj" data-d="7">
                 <div class="pr-num">07</div>
-                <div class="hero-badge">Hero Project</div>
+                <div class="hero-badge">Deep Learning</div>
                 <div class="pr-yr">2025</div>
                 <h3 class="pr-ttl">NeuroPersona — Adaptive AI Personality Engine</h3>
                 <p class="pr-desc">Advanced AI system for personality modeling and behavioral analytics using hybrid deep learning techniques — combining ANN, RNN (LSTM), and NLP pipelines for emotion and intent detection.</p>
@@ -2213,7 +2418,6 @@
                     <a class="pr-lnk" href="https://github.com/ShravanKatkar/IronFit-gym-" target="_blank" rel="noopener noreferrer">Source Code <span>→</span></a>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -2277,10 +2481,10 @@
         <p class="ct-s rev" data-d="2">Open to full-time roles, freelance projects &amp; collaborations<br>in AI, ML
             &amp; intelligent systems.</p>
         <div class="ct-cards rev" data-d="3">
-            <a class="ct-card" href="resume.pdf" download><span>📄</span><span>Download Resume</span></a>
-            <a class="ct-card" href="https://mail.google.com/mail/?view=cm&fs=1&to=shravankatkar818@gmail.com"
-                target="_blank" rel="noopener noreferrer"><span>✉</span><span>shravankatkar818@gmail.com</span></a>
-            <a class="ct-card" href="tel:+919309735116"><span>📞</span><span>+91 93097 35116</span></a>
+            <a class="ct-card" href="resume.pdf" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg><span>Download Resume</span></a>
+            <a class="ct-card" href="mailto:shravankatkar818@gmail.com?subject=Opportunity%20for%20Shravan"
+                target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><span>shravankatkar818@gmail.com</span></a>
+            <a class="ct-card" href="tel:+919309735116"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 1.7 2z"/></svg><span>+91 93097 35116</span></a>
             <a class="ct-card" href="https://www.linkedin.com/in/shravan-katkar-05b170283/" target="_blank"
                 rel="noopener noreferrer"><span style="font-family:sans-serif;font-weight:700;">in</span><span>LinkedIn
                     Profile</span></a>
@@ -2297,12 +2501,43 @@
         </div>
     </div>
 
+    <button id="tm-fab" aria-label="Open terminal"><span>›_</span> ask shravan</button>
+    <div id="tm" role="dialog" aria-label="Terminal" hidden>
+        <div class="tm-h"><span>shravan@portfolio ~</span><button id="tm-x" aria-label="Close">×</button></div>
+        <div id="tm-log"></div>
+        <div class="tm-chips"><button>projects</button><button>stack</button><button>contact</button><button>sudo hire shravan</button></div>
+        <label class="tm-in"><span>$</span><input id="tm-i" autocomplete="off" spellcheck="false" aria-label="command"></label>
+    </div>
+
     <footer>
         <span class="ft-l">Shravan Suresh Katkar</span>
-        <span class="ft-r">© 2025 · AI Engineer · Pune, India</span>
+        <span class="ft-r">© <span id="yr">2026</span> · AI Engineer · Pune, India</span>
     </footer>
 
     <script>
+        /* ─── THEME TOGGLE & PERSISTENCE ─── */
+        const themeBtn = document.getElementById('theme-toggle');
+        function getPreferredTheme() {
+            const saved = localStorage.getItem('theme');
+            if (saved) return saved;
+            return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        function setTheme(theme) {
+            if (theme === 'light') {
+                document.body.classList.add('light-mode');
+            } else {
+                document.body.classList.remove('light-mode');
+            }
+            localStorage.setItem('theme', theme);
+        }
+        setTheme(getPreferredTheme());
+        if (themeBtn) {
+            themeBtn.addEventListener('click', () => {
+                const isLight = document.body.classList.contains('light-mode');
+                setTheme(isLight ? 'dark' : 'light');
+            });
+        }
+
         /* ─── LOADER ─── */
         const lbar = document.getElementById('lbar'), lpct = document.getElementById('lpct'), loader = document.getElementById('loader');
         let pct = 0;
@@ -2341,7 +2576,7 @@
         /* ─── NAV SCROLL ─── */
         window.addEventListener('scroll', () => document.getElementById('mnav').classList.toggle('sc', window.scrollY > 60));
 
-        /* ─── 3D TILT CARDS ─── */
+        /* ─── 3D TILT CARDS (for Skills & Certs only, rock-steady for project cards) ─── */
         document.querySelectorAll('.tc').forEach(card => {
             card.addEventListener('mousemove', e => {
                 const r = card.getBoundingClientRect();
@@ -2479,6 +2714,95 @@
             lb.classList.remove('active');
             document.body.style.overflow = '';
         }
+        document.getElementById('yr').textContent = new Date().getFullYear();
+
+        /* ─── LIVE PIPELINE ─── */
+        (() => {
+            const Q = [
+                ['Which project catches vulnerabilities in pull requests?', 'CodeGuard — a LangGraph multi-agent reviewer with a QLoRA-tuned Llama 3.1 8B security agent: +2.3% detection, 61% lower latency.'],
+                ['Can I chat with my documents fully offline?', 'VaultAI — RAG on FastAPI, ChromaDB and Ollama (Llama 3, Phi-3, Mistral). Nothing leaves your machine.'],
+                ['How do you stop a recommender from hallucinating?', 'CineSense — a ReAct agent on Groq Llama 3.3 70B may only recommend titles from a retrieved whitelist.'],
+                ['What protects sanitation workers on site?', 'CivicMind AI — BLIP-based hazard detection across 7 risk categories, with voice reporting.']
+            ];
+            const q = document.getElementById('plq'), o = document.getElementById('plo'), box = document.getElementById('live');
+            if (!box || !q || !o) return;
+            const st = [...box.querySelectorAll('.pl-step')], cells = [...box.querySelectorAll('.pl-cells i')];
+            const sleep = ms => new Promise(r => setTimeout(r, ms));
+            let on = false, k = 0;
+            new IntersectionObserver(e => { on = e[0].isIntersecting; }).observe(box);
+            (async () => {
+                if (matchMedia('(prefers-reduced-motion: reduce)').matches) { q.textContent = Q[0][0]; o.textContent = Q[0][1]; st.forEach(s => s.classList.add('on')); return; }
+                for (; ;) {
+                    while (!on) await sleep(300);
+                    const [a, b] = Q[k++ % Q.length];
+                    q.textContent = ''; o.textContent = ''; st.forEach(s => s.classList.remove('on')); cells.forEach(c => c.classList.remove('hit'));
+                    for (const ch of a) { q.textContent += ch; await sleep(28); }
+                    for (let i = 0; i < 4; i++) {
+                        st[i].classList.add('on');
+                        if (i === 1) for (let n = 0; n < 4; n++) cells[Math.random() * cells.length | 0].classList.add('hit');
+                        await sleep(650);
+                    }
+                    for (const w of b.split(' ')) { o.textContent += w + ' '; await sleep(70); }
+                    await sleep(3800);
+                }
+            })();
+        })();
+
+        /* ─── TERMINAL ─── */
+        (() => {
+            const $ = id => document.getElementById(id), tm = $('tm'), log = $('tm-log'), inp = $('tm-i');
+            if (!tm || !log || !inp) return;
+            const P = {
+                codeguard: ['CodeGuard', 'Multi-agent PR reviewer with a QLoRA security agent (+2.3% detection, 61% lower latency).', 'https://codeguard-bm3d38xaaeqhvxppuhcbgv.streamlit.app/', 'https://github.com/ShravanKatkar/CodeGuard'],
+                cinesense: ['CineSense', 'Hybrid recommender + grounded ReAct agent over 10,000+ titles.', 'https://cinesense-app.onrender.com/', 'https://github.com/ShravanKatkar/CineSense'],
+                vaultai: ['VaultAI', 'Offline RAG document chat on FastAPI, ChromaDB and Ollama.', 'https://vault-ai-gamma.vercel.app/', ''],
+                civicmind: ['CivicMind AI', 'Computer-vision hazard monitoring for sanitation workers.', 'https://civic-mind-9uve.vercel.app/', ''],
+                alias: ['A.L.I.A.S.', 'Voice-activated multi-LLM desktop assistant with long-term memory.', '', 'https://github.com/ShravanKatkar/A.L.I.A.S.---Advanced-Logical-Interface-and-Assistant-System'],
+                transitai: ['TransitAI', 'Java + FastAPI transit platform with ML ETA and fraud detection.', '', 'https://github.com/ShravanKatkar/TransitAI'],
+                ironfit: ['IronFit Gym', 'High-performance modern gym website built with React 19 and Tailwind CSS.', 'https://www.ironfitgym.online/', 'https://github.com/ShravanKatkar/IronFit-gym-']
+            };
+            const A = (u, t) => `<a href="${u}" target="_blank" rel="noopener">${t}</a>`;
+            const proj = v => `<b>${v[0]}</b> — ${v[1]} ${v[2] ? A(v[2], '[demo]') : ''} ${v[3] ? A(v[3], '[code]') : ''}`;
+            const C = {
+                help: () => 'commands: <b>projects</b>, <b>stack</b>, <b>contact</b>, <b>resume</b>, <b>theme</b>, <b>whoami</b>, <b>clear</b> — or name a project (try “codeguard”).',
+                projects: () => Object.values(P).map(proj).join('<br>'),
+                stack: () => 'Python · PyTorch · LangChain · LangGraph · FastAPI · React · PostgreSQL/pgvector · ChromaDB · Docker · AWS (learning)',
+                contact: () => `${A('mailto:shravankatkar818@gmail.com', 'shravankatkar818@gmail.com')}<br>${A('https://www.linkedin.com/in/shravan-katkar-05b170283/', 'linkedin')} · ${A('https://github.com/ShravanKatkar', 'github')}`,
+                resume: () => A('resume.pdf', 'download resume.pdf'),
+                theme: () => {
+                    const isLight = document.body.classList.contains('light-mode');
+                    setTheme(isLight ? 'dark' : 'light');
+                    return `Switched theme to <b>${isLight ? 'dark' : 'light'}</b> mode.`;
+                },
+                whoami: () => 'Shravan Katkar — AI engineer in Pune. GenAI, RAG, computer vision, full-stack.',
+                hire: () => 'Permission granted ✓ Say hello: ' + A('mailto:shravankatkar818@gmail.com?subject=Opportunity%20for%20Shravan', 'shravankatkar818@gmail.com')
+            };
+            C.ls = C.projects; C.about = C.whoami; C.cv = C.resume; C.email = C.contact; C.skills = C.stack;
+            const say = (h, c) => { const p = document.createElement('p'); if (c) p.className = c; p.innerHTML = h; log.appendChild(p); log.scrollTop = log.scrollHeight; };
+            const esc = s => s.replace(/[&<>]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[m]));
+            function run(cmd) {
+                cmd = cmd.trim(); if (!cmd) return;
+                say('$ ' + esc(cmd), 'u');
+                const key = cmd.toLowerCase().replace(/[^a-z ]/g, '').trim(), flat = key.replace(/ /g, '');
+                if (key === 'clear') { log.innerHTML = ''; return; }
+                if (/hire|job|intern/.test(key)) return say(C.hire());
+                const hit = Object.keys(P).find(n => flat.includes(n));
+                say(C[key] ? C[key]() : hit ? proj(P[hit]) : 'command not found: ' + esc(cmd) + ' — type <b>help</b>');
+            }
+            const toggle = f => { tm.hidden = f === undefined ? !tm.hidden : !f; if (!tm.hidden) { if (!log.children.length) say('Hi, I’m Shravan’s portfolio shell. Type <b>help</b> — or try <b>sudo hire shravan</b>.'); inp.focus(); } };
+            $('tm-fab').onclick = () => toggle(); $('tm-x').onclick = () => toggle(false);
+            document.querySelectorAll('.tm-chips button').forEach(b => b.onclick = () => run(b.textContent));
+            inp.addEventListener('keydown', e => { if (e.key === 'Enter') { run(inp.value); inp.value = ''; } });
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') toggle(false);
+                else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); toggle(); }
+            });
+        })();
+
+        /* ─── CARD SPOTLIGHT ─── */
+        document.querySelectorAll('.pr-card').forEach(c => c.addEventListener('mousemove', e => {
+            const r = c.getBoundingClientRect(); c.style.setProperty('--mx', e.clientX - r.left + 'px'); c.style.setProperty('--my', e.clientY - r.top + 'px');
+        }));
     </script>
 </body>
 
