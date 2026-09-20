@@ -1107,9 +1107,9 @@
             z-index: 10;
         }
 
-        .hero-proj {
+        .hero-proj:hover {
             border-color: rgba(201, 169, 110, 0.5) !important;
-            box-shadow: 0 0 35px rgba(201, 169, 110, 0.15), inset 0 0 15px rgba(201, 169, 110, 0.05) !important;
+            box-shadow: 0 0 35px rgba(201, 169, 110, 0.2), inset 0 0 15px rgba(201, 169, 110, 0.08), 0 32px 80px rgba(0, 0, 0, .6) !important;
         }
         
         .hero-badge {
@@ -1739,7 +1739,7 @@
         <div class="h-noise"></div>
         <div class="h-stats">
             <div>
-                <div class="hs-num">4+</div>
+                <div class="hs-num">8+</div>
                 <div class="hs-lbl">Projects</div>
             </div>
             <div>
@@ -1990,42 +1990,160 @@
         <div class="sec-lbl rev">02 — Selected Work</div>
         <div class="pr-grid">
 
-            <!-- 01 VaultAI -->
+            <!-- 01 ALIAS -->
             <div class="pr-card tc rev full-w" data-d="1">
                 <div class="pr-num">01</div>
-                <div class="pr-yr">June 2026</div>
-                <h3 class="pr-ttl">VaultAI — Offline AI Document Intelligence Suite</h3>
-                <p class="pr-desc">A production-grade, privacy-first Retrieval-Augmented Generation (RAG) platform that enables users to chat with local documents using open-source LLMs running entirely offline. Built with FastAPI, React, LangChain, ChromaDB, and Ollama, VaultAI delivers secure, real-time document intelligence without relying on external APIs.</p>
+                <div class="hero-badge">Flagship Project</div>
+                <div class="pr-yr">October 2025</div>
+                <h3 class="pr-ttl">A.L.I.A.S. — Advanced Logical Interface &amp; Assistant System</h3>
+                <p class="pr-desc">A powerful, voice-activated AI desktop assistant running natively on Windows via Electron and a local FastAPI backend. Engineered with multi-model intelligence, persistent long-term memory, real-time system automation, and context-aware active window intelligence.</p>
                 <div class="pr-feats-grid">
                     <ul class="pr-feats">
-                        <li>100% offline AI assistant with complete on-device processing and zero cloud dependencies.</li>
-                        <li>Intelligent document ingestion for PDF, TXT, and Markdown files with automatic chunking and vector embeddings.</li>
-                        <li>Real-time streaming RAG chat powered by LangChain, ChromaDB, and local Ollama models.</li>
-                        <li>Dynamic local model discovery with support for multiple LLMs, including Llama 3, Phi-3, and Mistral.</li>
+                        <li>Multi-model intelligence integrating Gemini, OpenAI, Groq, and DeepSeek with dynamic latency and task routing.</li>
+                        <li>Hands-free interaction with real-time Speech-to-Text (STT) and low-latency Text-to-Speech (TTS) voice synthesis.</li>
+                        <li>Persistent long-term memory architecture powered by SQLite local database for personalized cross-session context.</li>
                     </ul>
                     <ul class="pr-feats">
-                        <li>Built-in evaluation dashboard for monitoring retrieval accuracy, response quality, and generation latency.</li>
-                        <li>Modern React interface with a premium glassmorphism design, live performance metrics, and interactive visualizations.</li>
-                        <li>One-click launcher with automated environment setup, Docker support, and unified deployment.</li>
+                        <li>Deep Windows OS system automation: application launching, multimedia control, file management, and native hotkeys.</li>
+                        <li>Context-aware active window intelligence dynamically inspecting code editors (VS Code) and web browsers.</li>
+                        <li>High-speed bidirectional communication layer built on FastAPI WebSockets with modern React 19 UI.</li>
                     </ul>
                 </div>
+                <div class="pr-tags">
+                    <span class="ptag">Python</span>
+                    <span class="ptag">FastAPI</span>
+                    <span class="ptag">React</span>
+                    <span class="ptag">Electron</span>
+                    <span class="ptag">SQLite</span>
+                    <span class="ptag">PyQt6</span>
+                    <span class="ptag">Java</span>
+                    <span class="ptag">Socket.IO</span>
+                    <span class="ptag">LLM APIs</span>
+                </div>
+                <a class="pr-lnk" href="https://github.com/ShravanKatkar/A.L.I.A.S.---Advanced-Logical-Interface-and-Assistant-System" target="_blank" rel="noopener noreferrer">View on GitHub <span>→</span></a>
+            </div>
+
+            <!-- 02 CineSense -->
+            <div class="pr-card tc rev hero-proj" data-d="2">
+                <div class="pr-num">02</div>
+                <div class="hero-badge">Hero Project</div>
+                <div class="pr-yr">September 2026</div>
+                <h3 class="pr-ttl">CineSense — Enterprise Hybrid AI Movie Recommendation &amp; Grounded RAG Assistant</h3>
+                <p class="pr-desc">A full-stack, production-grade cinema intelligence platform over 10,000+ titles featuring a 2-stage hybrid recommendation pipeline (5 algorithmic tiers fused via RRF &amp; MMR) coupled with an autonomous ReAct AI Agent with a 0% hallucination guarantee.</p>
+                <ul class="pr-feats">
+                    <li>Two-stage recsys: ALS Matrix Factorization (64 latent factors), Item-Item CF, Neural Semantic Embeddings (kNN), TF-IDF, and Bayesian Popularity.</li>
+                    <li>Candidate ranking fused via RRF and diversified with Maximal Marginal Relevance (MMR).</li>
+                    <li>Autonomous ReAct agent powered by Groq Llama 3.3 70B with candidate whitelist grounding.</li>
+                    <li>Dual-tier caching with Redis 7 &amp; in-memory TTL plus live telemetry feedback loop.</li>
+                    <li>Built with React 19, Vite, Tailwind CSS, FastAPI Python 3.12, and PostgreSQL 16 + pgvector.</li>
+                </ul>
+                <div class="pr-tags">
+                    <span class="ptag">FastAPI</span>
+                    <span class="ptag">React</span>
+                    <span class="ptag">Python</span>
+                    <span class="ptag">PostgreSQL</span>
+                    <span class="ptag">Vector DBs</span>
+                    <span class="ptag">Redis</span>
+                    <span class="ptag">Groq</span>
+                    <span class="ptag">LangChain</span>
+                    <span class="ptag">RAG</span>
+                    <span class="ptag">Docker</span>
+                </div>
+                <div style="display: flex; gap: 18px; flex-wrap: wrap;">
+                    <a class="pr-lnk" href="https://cinesense-app.onrender.com/" target="_blank" rel="noopener noreferrer">Live Demo <span>↗</span></a>
+                    <a class="pr-lnk" href="https://github.com/ShravanKatkar/CineSense" target="_blank" rel="noopener noreferrer">Source Code <span>→</span></a>
+                </div>
+            </div>
+
+            <!-- 03 CodeGuard -->
+            <div class="pr-card tc rev hero-proj" data-d="3">
+                <div class="pr-num">03</div>
+                <div class="hero-badge">Hero Project</div>
+                <div class="pr-yr">July 2026</div>
+                <h3 class="pr-ttl">CodeGuard — Autonomous Multi-Agent Code Review System</h3>
+                <p class="pr-desc">An autonomous multi-agent AI system designed to review GitHub Pull Requests like a senior engineering team, featuring LangGraph state routing and a fine-tuned vulnerability detection agent.</p>
+                <ul class="pr-feats">
+                    <li>Dynamic parallel state routing via LangGraph coordinating Planner, Security, Architecture RAG, and Refactor reviewers.</li>
+                    <li>Fine-tuned QLoRA Security Agent (Llama 3.1 8B) delivering +2.3% vulnerability detection and 61% lower latency over base models.</li>
+                    <li>Codebase RAG layer indexing AST function/class definitions for deep contextual semantic retrieval.</li>
+                    <li>Interactive Streamlit dashboard visualizing PR metrics, vulnerability breakdowns, and base vs. fine-tuned benchmark comparisons.</li>
+                    <li>Containerized Docker action posting structured review comments directly to GitHub PRs.</li>
+                </ul>
+                <div class="pr-tags">
+                    <span class="ptag">Python</span>
+                    <span class="ptag">LangGraph</span>
+                    <span class="ptag">LangChain</span>
+                    <span class="ptag">PyTorch</span>
+                    <span class="ptag">RAG</span>
+                    <span class="ptag">Streamlit</span>
+                    <span class="ptag">Docker</span>
+                    <span class="ptag">LLM APIs</span>
+                </div>
+                <div style="display: flex; gap: 18px; flex-wrap: wrap;">
+                    <a class="pr-lnk" href="https://codeguard-bm3d38xaaeqhvxppuhcbgv.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo <span>↗</span></a>
+                    <a class="pr-lnk" href="https://github.com/ShravanKatkar/CodeGuard" target="_blank" rel="noopener noreferrer">Source Code <span>→</span></a>
+                </div>
+            </div>
+
+            <!-- 04 TransitAI -->
+            <div class="pr-card tc rev hero-proj" data-d="4">
+                <div class="pr-num">04</div>
+                <div class="hero-badge">Hero Project</div>
+                <div class="pr-yr">2026</div>
+                <h3 class="pr-ttl">TransitAI — Distributed Transit &amp; Real-Time Fleet Platform</h3>
+                <p class="pr-desc">A production-ready distributed intelligent public transit platform featuring microservices for live fleet telemetry, ML-driven ETA &amp; crowd forecasting, automated digital pass issuing, and fraud prevention.</p>
+                <ul class="pr-feats">
+                    <li>Distributed microservice architecture: Java 21 Spring Boot core backend + FastAPI Python ML service + React 19 frontend.</li>
+                    <li>Real-time vehicle telemetry and live bus tracking streamed via WebSocket STOMP.</li>
+                    <li>XGBoost dynamic ETA prediction and rush-hour crowd density classification models.</li>
+                    <li>Anti-fraud anomaly detector calculating Haversine distance &amp; travel velocity (v &gt; 120 km/h) to block QR ticket duplication.</li>
+                    <li>Role-based portals for Passengers, Drivers, Conductors, and Fleet Administrators.</li>
+                </ul>
+                <div class="pr-tags">
+                    <span class="ptag">Java</span>
+                    <span class="ptag">Spring Boot</span>
+                    <span class="ptag">FastAPI</span>
+                    <span class="ptag">Python</span>
+                    <span class="ptag">React</span>
+                    <span class="ptag">PostgreSQL</span>
+                    <span class="ptag">Redis</span>
+                    <span class="ptag">WebSockets</span>
+                    <span class="ptag">Docker</span>
+                </div>
+                <a class="pr-lnk" href="https://github.com/ShravanKatkar/TransitAI" target="_blank" rel="noopener noreferrer">View on GitHub <span>→</span></a>
+            </div>
+
+            <!-- 05 VaultAI -->
+            <div class="pr-card tc rev hero-proj" data-d="5">
+                <div class="pr-num">05</div>
+                <div class="hero-badge">Hero Project</div>
+                <div class="pr-yr">June 2026</div>
+                <h3 class="pr-ttl">VaultAI — Offline AI Document Intelligence Suite</h3>
+                <p class="pr-desc">A production-grade, privacy-first Retrieval-Augmented Generation (RAG) platform that enables users to chat with local documents using open-source LLMs running entirely offline. Built with FastAPI, React, LangChain, ChromaDB, and Ollama.</p>
+                <ul class="pr-feats">
+                    <li>100% offline AI assistant with complete on-device processing and zero cloud dependencies.</li>
+                    <li>Intelligent document ingestion for PDF, TXT, and Markdown files with automatic chunking and vector embeddings.</li>
+                    <li>Real-time streaming RAG chat powered by LangChain, ChromaDB, and local Ollama models.</li>
+                    <li>Dynamic local model discovery with support for multiple LLMs, including Llama 3, Phi-3, and Mistral.</li>
+                    <li>Evaluation dashboard monitoring retrieval accuracy, response quality, and latency.</li>
+                </ul>
                 <div class="pr-tags">
                     <span class="ptag">FastAPI</span>
                     <span class="ptag">React</span>
                     <span class="ptag">LangChain</span>
+                    <span class="ptag">Vector DBs</span>
                     <span class="ptag">ChromaDB</span>
                     <span class="ptag">Ollama</span>
                     <span class="ptag">RAG</span>
-                    <span class="ptag">Llama 3</span>
                     <span class="ptag">Docker</span>
                     <span class="ptag">Python</span>
                 </div>
-                <a class="pr-lnk" href="https://vault-ai-gamma.vercel.app/" target="_blank" rel="noopener noreferrer">View Details <span>→</span></a>
+                <a class="pr-lnk" href="https://vault-ai-gamma.vercel.app/" target="_blank" rel="noopener noreferrer">Live Demo <span>↗</span></a>
             </div>
 
-            <!-- 02 CivicMind AI -->
-            <div class="pr-card tc rev hero-proj" data-d="2">
-                <div class="pr-num">02</div>
+            <!-- 06 CivicMind AI -->
+            <div class="pr-card tc rev hero-proj" data-d="6">
+                <div class="pr-num">06</div>
                 <div class="hero-badge">Hero Project</div>
                 <div class="pr-yr">January 2026</div>
                 <h3 class="pr-ttl">CivicMind AI — Safety Platform</h3>
@@ -2041,52 +2159,60 @@
                         class="ptag">BLIP</span><span class="ptag">LangChain</span><span
                         class="ptag">HuggingFace</span><span class="ptag">AWS</span><span class="ptag">Vector
                         DBs</span><span class="ptag">FastAPI</span><span class="ptag">React</span></div>
-                <a class="pr-lnk" href="https://civic-mind-9uve.vercel.app/" target="_blank" rel="noopener noreferrer">View Details <span>→</span></a>
+                <a class="pr-lnk" href="https://civic-mind-9uve.vercel.app/" target="_blank" rel="noopener noreferrer">Live Demo <span>↗</span></a>
             </div>
 
-            <!-- 03 ALIAS -->
-            <div class="pr-card tc rev hero-proj" data-d="3">
-                <div class="pr-num">03</div>
+            <!-- 07 NeuroPersona -->
+            <div class="pr-card tc rev hero-proj" data-d="7">
+                <div class="pr-num">07</div>
                 <div class="hero-badge">Hero Project</div>
-                <div class="pr-yr">October 2025</div>
-                <h3 class="pr-ttl">ALIAS — AI Desktop Assistant</h3>
-                <p class="pr-desc">A cross-platform AI-powered desktop assistant with voice-enabled interaction and real-time system control.</p>
-                <ul class="pr-feats">
-                    <li>Integrated 4 LLMs: Gemini, OpenAI, Groq, DeepSeek</li>
-                    <li>STT + TTS for hands-free interaction</li>
-                    <li>Context-aware window intelligence (VS Code, Browser)</li>
-                    <li>System automation: apps, media, files</li>
-                    <li>Real-time WebSocket backend via FastAPI</li>
-                </ul>
-                <div class="pr-tags"><span class="ptag">Python</span><span class="ptag">FastAPI</span><span
-                        class="ptag">React</span><span class="ptag">PyQt6</span><span class="ptag">Java</span><span
-                        class="ptag">Electron</span><span class="ptag">Socket.IO</span><span class="ptag">LLM
-                        APIs</span></div>
-                <a class="pr-lnk" href="https://github.com/ShravanKatkar/A.L.I.A.S.---Advanced-Logical-Interface-and-Assistant-System" target="_blank" rel="noopener noreferrer">View Details <span>→</span></a>
-            </div>
-
-            <!-- 04 NeuroPersona -->
-            <div class="pr-card tc rev full-w" data-d="4">
-                <div class="pr-num">04</div>
                 <div class="pr-yr">2025</div>
                 <h3 class="pr-ttl">NeuroPersona — Adaptive AI Personality Engine</h3>
                 <p class="pr-desc">Advanced AI system for personality modeling and behavioral analytics using hybrid deep learning techniques — combining ANN, RNN (LSTM), and NLP pipelines for emotion and intent detection.</p>
-                <div class="pr-feats-grid">
-                    <ul class="pr-feats">
-                        <li>Hybrid ANN + RNN + NLP architecture</li>
-                        <li>Context-aware conversation memory</li>
-                        <li>Personality engine with behavioral profiling</li>
-                    </ul>
-                    <ul class="pr-feats">
-                        <li>LSTM-based sequence modeling</li>
-                        <li>Tone control mechanisms</li>
-                        <li>Emotion trend visualization dashboards</li>
-                    </ul>
-                </div>
+                <ul class="pr-feats">
+                    <li>Hybrid ANN + RNN + NLP architecture</li>
+                    <li>Context-aware conversation memory &amp; behavioral profiling</li>
+                    <li>LSTM sequence modeling with emotional tone control</li>
+                    <li>Emotion trend visualization dashboards</li>
+                    <li>Deployed as an interactive Streamlit analytics platform</li>
+                </ul>
                 <div class="pr-tags"><span class="ptag">TensorFlow</span><span class="ptag">Keras</span><span
                         class="ptag">LSTM</span><span class="ptag">NLP</span><span class="ptag">SQL</span><span
                         class="ptag">Matplotlib</span><span class="ptag">SQLite</span></div>
-                <a class="pr-lnk" href="https://mu3gs2mdiyhy6cltzee53k.streamlit.app/" target="_blank" rel="noopener noreferrer">View Details <span>→</span></a>
+                <a class="pr-lnk" href="https://mu3gs2mdiyhy6cltzee53k.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo <span>↗</span></a>
+            </div>
+
+            <!-- 08 IronFit Gym -->
+            <div class="pr-card tc rev full-w" data-d="8">
+                <div class="pr-num">08</div>
+                <div class="hero-badge">Production Web App</div>
+                <div class="pr-yr">June 2026</div>
+                <h3 class="pr-ttl">IronFit Gym — High-Performance Fitness Platform</h3>
+                <p class="pr-desc">A modern, responsive web application for IronFit Gym engineered with fluid physics-based animations, dynamic membership discovery, and high-conversion user flows deployed live to production.</p>
+                <div class="pr-feats-grid">
+                    <ul class="pr-feats">
+                        <li>Built with React 19, Vite, Tailwind CSS v3, and React Router DOM v7 for sub-second page transitions.</li>
+                        <li>Interactive UI enhanced with Framer Motion fluid animations and Lucide React iconography.</li>
+                        <li>Comprehensive membership tier comparison, pricing matrices, and perk breakdown tables.</li>
+                    </ul>
+                    <ul class="pr-feats">
+                        <li>Dynamic class schedule modules with category filters and personal trainer booking workflows.</li>
+                        <li>Integrated lead capture and contact scheduling workflows with full mobile responsiveness.</li>
+                        <li>100% production deployment with custom domain configuration at ironfitgym.online.</li>
+                    </ul>
+                </div>
+                <div class="pr-tags">
+                    <span class="ptag">React</span>
+                    <span class="ptag">Tailwind CSS</span>
+                    <span class="ptag">Vite</span>
+                    <span class="ptag">JavaScript</span>
+                    <span class="ptag">Framer Motion</span>
+                    <span class="ptag">Web App</span>
+                </div>
+                <div style="display: flex; gap: 18px; flex-wrap: wrap;">
+                    <a class="pr-lnk" href="https://www.ironfitgym.online/" target="_blank" rel="noopener noreferrer">Live Site <span>↗</span></a>
+                    <a class="pr-lnk" href="https://github.com/ShravanKatkar/IronFit-gym-" target="_blank" rel="noopener noreferrer">Source Code <span>→</span></a>
+                </div>
             </div>
 
         </div>
