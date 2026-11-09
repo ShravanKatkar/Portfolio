@@ -1,40 +1,13 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
 
 // https://vite.dev/config/
+// Dynamic base: Vercel sets VERCEL=1 so base is '/', whereas GitHub Pages deploys under '/Portfolio/'
+const isVercel = process.env.VERCEL === '1' || process.env.VERCEL === 'true';
+
 export default defineConfig({
-  plugins: [
-    react(),
-    {
-      name: 'serve-landing-pages-at-root',
-      configureServer(server) {
-        server.middlewares.use((req, _res, next) => {
-          if (req.url && req.url.startsWith('/landing-pages/')) {
-            req.url = '/Portfolio' + req.url;
-          }
-          next();
-        });
-      },
-      configurePreviewServer(server) {
-        server.middlewares.use((req, _res, next) => {
-          if (req.url && req.url.startsWith('/landing-pages/')) {
-            req.url = '/Portfolio' + req.url;
-          }
-          next();
-        });
-      },
-    },
-  ],
-  resolve: {
-    alias: {
-      'designcodeio/threeui/style.css': path.resolve(__dirname, 'src/shaders/threeui.css'),
-      '@designcodeio/threeui/style.css': path.resolve(__dirname, 'src/shaders/threeui.css'),
-      'designcodeio/threeui': '@designcodeio/threeui',
-    },
-  },
-  // GitHub Pages repository name is 'Portfolio'
-  base: '/Portfolio/',
+  plugins: [react()],
+  base: isVercel ? '/' : '/Portfolio/',
   build: {
     outDir: 'dist',
     emptyOutDir: true,
