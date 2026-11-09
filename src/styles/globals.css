@@ -1,0 +1,226 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-canvas: #09090b;
+  --bg-charcoal: #111114;
+  --text-primary: #F4F1EA;
+  --text-muted: #8E8C86;
+  --text-ash: #B5B5B5;
+  --accent-burnt: #FC6B2F;
+  --ember: #FC6B2F;
+  --ember-glow: rgba(252, 107, 47, 0.18);
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --iron: rgba(255, 255, 255, 0.08);
+}
+
+html {
+  background-color: #09090b;
+  color: #F4F1EA;
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  color-scheme: dark;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #070707;
+  color: #F4F1EA;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom sleek scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FC6B2F;
+}
+
+/* Jishnu Mondal cursor reset: disables clumsy DOM cursor rings */
+.cursor-dot, .cursor-ring {
+  display: none !important;
+}
+
+/* Grain texture overlay (Julian Vance / ECHO aesthetic) */
+.film-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.038;
+  background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%" height="100%" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+}
+
+/* Editorial typography classes */
+.font-editorial-serif {
+  font-family: 'Instrument Serif', Georgia, serif;
+}
+
+.font-editorial-display {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.font-editorial-mono {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+/* Masked headline typography lines */
+.mask-line {
+  overflow: hidden;
+  display: block;
+}
+
+/* Subtle architectural grid lines */
+.architectural-grid {
+  background-size: 80px 80px;
+  background-image: 
+    linear-gradient(to right, rgba(244, 241, 234, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(244, 241, 234, 0.025) 1px, transparent 1px);
+}
+
+/* Jishnu Mondal / ECHO Design System Elements */
+.text-ember {
+  color: #FC6B2F;
+}
+
+.bg-ember {
+  background-color: #FC6B2F;
+}
+
+.border-ember {
+  border-color: #FC6B2F;
+}
+
+/* Liquid Glass Design System Elements (Editorial Tactile Blueprint) */
+.glass-card, .liquid-glass-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(20, 20, 26, 0.85) 50%, rgba(9, 9, 13, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 1rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255, 255, 255, 0.22), inset 0 -1px 1px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.glass-card::before, .liquid-glass-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, transparent 60%, rgba(255, 255, 255, 0.02) 100%);
+  pointer-events: none;
+}
+
+.glass-card-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-hover:hover {
+  border-color: rgba(252, 107, 47, 0.55);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(252, 107, 47, 0.22);
+}
+
+/* Floating dust particles keyframes */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+    opacity: 0.8;
+  }
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translateY(20px) translateX(-10px);
+    opacity: 0.7;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.08);
+  }
+}
+
+/* Staggered Navigation Classes */
+.sm-toggle {
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  cursor: pointer;
+  color: #e9e9ef;
+  background: rgba(17, 17, 20, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.3rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.sm-toggle:hover {
+  background: rgba(30, 30, 38, 0.9);
+  border-color: rgba(252, 107, 47, 0.6);
+  box-shadow: 0 8px 32px rgba(252, 107, 47, 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
