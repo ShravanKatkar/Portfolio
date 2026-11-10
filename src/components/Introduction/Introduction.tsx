@@ -202,14 +202,6 @@ export const Introduction: React.FC = () => {
                 <p className="text-xs sm:text-sm md:text-base text-[#EAE6E1]/90 max-w-2xl leading-relaxed font-light">
                   Every prompt, every vector index, every line of backend code is an opportunity to create deterministic, reliable systems that truly empower people.
                 </p>
-
-                {/* Pillars Grid */}
-                <div className="mt-2 sm:mt-4 flex flex-wrap items-center justify-center gap-2.5 font-mono text-[10px] sm:text-[11px] text-[#B5B5B5]">
-                  <span className="px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">0.9538 HIT@1 RAG</span>
-                  <span className="px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">LANGGRAPH STATE ROUTING</span>
-                  <span className="px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">LOCAL LLM ORCHESTRATION</span>
-                  <span className="px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm">FASTAPI &amp; REACT 19</span>
-                </div>
               </div>
             </div>
           </div>

@@ -27,12 +27,6 @@ export const Hero: React.FC = () => {
         { opacity: 1, scale: 1, duration: 1.2, stagger: 0.05, delay: 0.1 }
       )
       .fromTo(
-        '.hero-badge',
-        { y: -20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8 },
-        '-=0.8'
-      )
-      .fromTo(
         titleWrapperRef.current,
         { scale: 0.85, opacity: 0 },
         { scale: 1, opacity: 1, duration: 1.4, ease: 'expo.out' },
@@ -125,15 +119,7 @@ export const Hero: React.FC = () => {
         <div className="dust absolute rounded-full" style={{ width: '1.5px', height: '1.5px', background: 'rgba(255,255,255,0.2)', top: '35%', left: '42%', animation: 'float-reverse 6.1s ease-in-out infinite' }} />
       </div>
 
-      {/* 04. Top Status & Availability Badge (z-[20]) */}
-      <div className="hero-badge relative z-[20] flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-md">
-        <span className="w-2 h-2 rounded-full bg-[#FC6B2F] shadow-[0_0_10px_#FC6B2F] animate-pulse" />
-        <span className="text-[10px] sm:text-[11px] font-mono text-[#B5B5B5] tracking-[0.2em] uppercase">
-          AVAILABLE FOR OPPORTUNITIES · PUNE, IN
-        </span>
-      </div>
-
-      {/* 05. Central Identity & Monolithic Typography (z-[20] above cursor) */}
+      {/* 04. Central Identity & Monolithic Typography (z-[20] above cursor) */}
       <div className="relative z-[20] my-auto flex flex-col items-center text-center w-full max-w-5xl px-2">
         {/* Monolithic SHRAVAN Title - Perfectly Aligned, Always Visible, Zero Overlap */}
         <div
