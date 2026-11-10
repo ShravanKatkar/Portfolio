@@ -24,6 +24,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onOpenCommandPale
     { label: 'Philosophy', href: '#about', id: 'about' },
     { label: 'Projects', href: '#projects', id: 'projects' },
     { label: 'Experience', href: '#experience', id: 'experience' },
+    { label: 'Certificates', href: '#certificates', id: 'certificates' },
     { label: 'Contact', href: '#contact', id: 'contact' },
   ];
 

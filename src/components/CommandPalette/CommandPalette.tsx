@@ -12,6 +12,7 @@ import {
   Github, 
   Linkedin, 
   FileText,
+  Award,
   X
 } from 'lucide-react';
 import { PERSONAL_INFO } from '../../data/socials';
@@ -74,6 +75,14 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
       shortcut: 'E',
       icon: <GraduationCap className="h-4 w-4" />,
       action: () => navigateTo('experience'),
+    },
+    {
+      id: 'nav-certificates',
+      title: 'Verified Credentials & Certifications',
+      category: 'Navigation',
+      shortcut: 'K',
+      icon: <Award className="h-4 w-4" />,
+      action: () => navigateTo('certificates'),
     },
     {
       id: 'nav-contact',

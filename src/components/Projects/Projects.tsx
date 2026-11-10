@@ -113,10 +113,19 @@ const PROJECTS: ProjectItem[] = [
 ];
 
 const STACK: Record<string, string[]> = {
-  'AI / GENAI': ['Python', 'LangChain', 'LangGraph', 'Hugging Face', 'OpenAI / Gemini APIs', 'Ollama', 'QLoRA'],
-  'RETRIEVAL': ['RAG pipelines', 'FAISS', 'ChromaDB', 'pgvector', 'Agent orchestration'],
-  'VISION & SPEECH': ['YOLOv8', 'BLIP', 'Whisper'],
-  'FULLSTACK': ['FastAPI', 'React', 'TypeScript', 'Vite', 'Tailwind', 'PostgreSQL', 'Docker', 'Streamlit'],
+  'PROGRAMMING': ['Python', 'C', 'HTML', 'CSS'],
+  'ARTIFICIAL INTELLIGENCE': [
+    'Machine Learning',
+    'Deep Learning',
+    'Generative AI',
+    'Large Language Models (LLMs)',
+    'RAG',
+    'NLP',
+    'Computer Vision',
+  ],
+  'FRAMEWORKS AND LIBRARIES': ['FastAPI', 'LangChain', 'YOLOv8', 'BLIP', 'Ollama'],
+  'BACKEND AND DATABASES': ['REST APIs', 'WebSockets', 'JSON', 'ChromaDB', 'SQLite', 'MySQL'],
+  'DEVELOPMENT AND TESTING': ['Git', 'GitHub', 'Pytest', 'Postman', 'Regression Testing'],
 };
 
 const ME = {
@@ -744,7 +753,7 @@ export const Projects: React.FC = () => {
 
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#FC6B2F] animate-pulse" />
-              <div className="text-[11px] font-mono tracking-widest text-[#FC6B2F] uppercase">STACK // ARCHITECTURE</div>
+              <div className="text-[11px] font-mono tracking-widest text-[#FC6B2F] uppercase">TECHNICAL SKILLS // UNDER THE HOOD</div>
             </div>
 
             <h2 className="text-2xl sm:text-3xl font-bold font-mono uppercase text-white tracking-tight">Under the hood.</h2>

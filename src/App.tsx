@@ -11,6 +11,7 @@ import { Hero } from './components/Hero/Hero';
 import { Introduction } from './components/Introduction/Introduction';
 import { Projects } from './components/Projects/Projects';
 import { Experience } from './components/Experience/Experience';
+import { Certificates } from './components/Certificates/Certificates';
 import { Contact } from './components/Contact/Contact';
 
 export const App: React.FC = () => {
@@ -25,6 +26,7 @@ export const App: React.FC = () => {
     'about',
     'projects',
     'experience',
+    'certificates',
     'contact'
   ];
 
@@ -82,7 +84,10 @@ export const App: React.FC = () => {
         {/* 04. Where I've Been (Experience & Milestones) */}
         <Experience />
 
-        {/* 05. Contact & Editorial Footer */}
+        {/* 05. Verified Credentials & Certifications */}
+        <Certificates />
+
+        {/* 06. Contact & Editorial Footer */}
         <Contact />
       </main>
     </div>
