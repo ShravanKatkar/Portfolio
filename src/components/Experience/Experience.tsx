@@ -29,19 +29,6 @@ export const Experience: React.FC = () => {
       ],
       skills: ['Algorithms', 'Data Structures', 'Database Systems', 'Linear Algebra', 'C++', 'Java'],
     },
-    {
-      period: '2024 — Present',
-      context: 'Open Source & Competitions',
-      role: 'AI Researcher & Hackathon Finalist',
-      description:
-        'Actively building and benchmarking public generative AI prototypes, participating in nationwide hackathons, and contributing to open-source developer tooling.',
-      bullets: [
-        'Finalist at Hack the Horizon Hackathon for CivicMind AI municipal anomaly classification.',
-        'Certified in Generative AI Application Architecture and Advanced Database Management (HackerRank SQL Gold).',
-        'Authored benchmark test suites for hybrid vector-keyword retrieval pipelines.',
-      ],
-      skills: ['Git', 'Docker', 'PostgreSQL', 'Computer Vision', 'LangChain', 'REST APIs'],
-    },
   ];
 
   return (
