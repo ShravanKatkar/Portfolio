@@ -62,7 +62,7 @@ export const DeveloperTerminal: React.FC = () => {
         newLogs.push({
           id: (Date.now() + 1).toString(),
           type: 'out',
-          text: `PROJECT A.L.I.A.S. (FLAGSHIP):\n  • Desktop AI assistant with real-time Speech-to-Text & Text-to-Speech\n  • Multi-model dynamic router: Groq, Gemini, OpenAI, DeepSeek\n  • SQLite persistent memory preserving cross-session conversation states\n  • Context-aware window inspector analyzing active VS Code buffers & browsers\n  • Repository: https://github.com/ShravanKatkar/A.L.I.A.S.---Advanced-Logical-Interface-and-Assistant-System`
+          text: `PROJECT A.L.I.A.S. — Advanced Logical Interface and Assistant System:\n  • Stack: Python, FastAPI, Electron, React, LangChain, ChromaDB, SQLite, WebSockets, LLMs\n  • 274 Benchmark Cases: 98.1% response quality (104/106), 98.1% automation accuracy (51/52)\n  • 96.9% multi-turn context retention (31/32) across persistent conversational memory\n  • Grounded RAG: 90.4% Hit@5 with 32.5 ms mean vector retrieval latency\n  • Safety Guardrails: 0 false positives across negative tests; 7/7 destructive commands blocked\n  • Repository: https://github.com/ShravanKatkar/A.L.I.A.S.---Advanced-Logical-Interface-and-Assistant-System`
         });
         break;
 

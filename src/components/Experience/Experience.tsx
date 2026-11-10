@@ -11,7 +11,7 @@ export const Experience: React.FC = () => {
         'Architecting production-ready RAG architectures, multi-agent LangGraph swarms, and local LLM inference engines. Bridging theoretical machine intelligence with scalable, low-latency backend engineering.',
       bullets: [
         'Shipped VaultAI offline RAG engine achieving 0.9538 Hit@1 and 0.9769 MRR retrieval accuracy on enterprise benchmarks.',
-        'Engineered A.L.I.A.S. multimodal voice and desktop automation agent swarm powered by local models.',
+        'Engineered A.L.I.A.S. desktop assistant integrating RAG, voice interaction, and OS automation evaluated across 274 benchmark test cases (98.1% accuracy, 90.4% Hit@5).',
         'Created CodeGuard multi-agent pull request review system using QLoRA fine-tuned vulnerability detectors.',
       ],
       skills: ['Python', 'FastAPI', 'LangGraph', 'ChromaDB', 'Ollama', 'React 19', 'Tailwind CSS'],

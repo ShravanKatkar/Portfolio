@@ -28,41 +28,44 @@ export const FEATURED_PROJECTS: Project[] = [
     title: "A.L.I.A.S. — Advanced Logical Interface and Assistant System",
     badge: "Flagship",
     period: "Oct 2025 – Dec 2025",
-    tagline: "Voice-activated Windows desktop AI assistant with multi-model routing, SQLite persistent memory, and OS automation.",
-    description: "A desktop AI assistant connecting multiple LLM providers with streamed responses, persistent conversation history, speech interaction, document-based RAG, and native desktop automation.",
-    problem: "Commercial voice assistants either suffer from high cloud latency, lack deep native operating system privileges, or lack contextual awareness of active developer workflows.",
-    solution: "Built a Windows desktop AI assistant connecting multiple LLM providers (Groq, Gemini, OpenAI) with streamed responses and persistent conversation history through a Python FastAPI backend and Electron interface.",
+    tagline: "Desktop AI assistant integrating LLM conversations, RAG, voice interaction, memory, and desktop automation.",
+    description: "Developed a desktop AI assistant integrating LLM-based conversations, Retrieval-Augmented Generation (RAG), voice interaction, conversational memory, and desktop automation. Built with an extensive 274-case evaluation framework covering response quality, RAG retrieval, multi-turn context retention, automation safety, and voice latency.",
+    problem: "Desktop AI assistants often struggle to balance unconstrained LLM reasoning with low-latency local execution, robust multi-turn context retention, high-recall document retrieval, and foolproof operating system automation safety.",
+    solution: "Architected A.L.I.A.S. using Python, FastAPI, Electron, React, LangChain, ChromaDB, SQLite, WebSockets, and LLMs. Engineered a comprehensive 274-case empirical benchmark verifying response quality (98.1%), automation accuracy (98.1%), context retention (96.9%), RAG retrieval (90.4% Hit@5), and 100% destructive command safety.",
     architectureWorkflow: [
-      "Voice Input Capture via real-time Speech-to-Text (STT) listener",
-      "Multi-model dynamic router evaluates complexity and selects optimal LLM (Groq / Gemini / OpenAI)",
-      "Context Extraction parses active IDE buffer (VS Code) and browser DOM",
-      "SQLite Persistent Memory maintains conversation state across sessions",
-      "Native Desktop Automation executes Windows shell actions, application launching, and hotkeys",
-      "FastAPI WebSockets stream bimodal token responses and low-latency voice synthesis (TTS)"
+      "Voice & Text Input capture via real-time Speech-to-Text (STT) and WebSocket interface",
+      "Multi-model LLM dynamic router evaluates prompt intent and dispatches streamed tokens",
+      "ChromaDB Vector Store executes grounded document RAG with 32.5 ms mean retrieval latency",
+      "SQLite Persistent Memory maintains conversation state across multi-turn sessions (96.9% retention)",
+      "Automation Engine triggers OS actions, app launching, file ops, and window management (98.1% accuracy)",
+      "Strict Automation Safety Guardrails evaluate commands, blocking 7/7 destructive execution attempts"
     ],
     features: [
-      "Built a Windows desktop AI assistant connecting multiple LLM providers with streamed responses and persistent conversation history.",
-      "Integrated document-based RAG, speech interaction, and desktop automation through a Python backend and Electron interface.",
-      "Hands-free interaction with real-time Speech-to-Text (STT) and low-latency Text-to-Speech (TTS) voice synthesis.",
-      "Persistent long-term memory architecture powered by SQLite local database for personalized cross-session context.",
-      "Deep Windows OS system automation: application launching, multimedia control, file management, and native hotkeys.",
-      "Context-aware active window intelligence dynamically inspecting code editors and web browsers."
+      "Developed a desktop AI assistant integrating LLM-based conversations, Retrieval-Augmented Generation (RAG), voice interaction, conversational memory, and desktop automation.",
+      "Built a benchmarking and evaluation framework covering 274 evaluation cases across response quality, RAG, context retention, automation, and voice.",
+      "Achieved 98.1% response-quality pass rate (104/106), 98.1% automation accuracy (51/52), and 96.9% multi-turn context retention (31/32) in the reported evaluation.",
+      "Evaluated RAG retrieval across multiple configurations, achieving 90.4% Hit@5 in the baseline results and 32.5 ms mean vector retrieval latency.",
+      "Implemented automation safety checks with 0 false positives across 9 negative test cases and blocked all 7/7 tested destructive commands.",
+      "Benchmarked LLM latency, TTFT, throughput, and voice synthesis performance; documented provider-specific results, errors, and evaluation limitations."
     ],
     metrics: [
-      { value: "0ms", label: "Cloud Dependency for Core OS Actions" },
-      { value: "Multi-LLM", label: "Groq · Gemini · OpenAI" },
-      { value: "Native", label: "Windows OS Integration" }
+      { value: "274", label: "Empirical Evaluation Cases" },
+      { value: "98.1%", label: "Response Quality Pass (104/106)" },
+      { value: "98.1%", label: "Automation Accuracy (51/52)" },
+      { value: "96.9%", label: "Context Retention (31/32)" },
+      { value: "90.4%", label: "RAG Retrieval Hit@5" },
+      { value: "100%", label: "Blocked Destructive Commands (7/7)" }
     ],
     technologies: [
       "Python",
       "FastAPI",
       "Electron",
+      "React",
       "LangChain",
+      "ChromaDB",
       "SQLite",
       "WebSockets",
-      "React",
-      "PyQt6",
-      "Socket.IO"
+      "LLMs"
     ],
     githubUrl: "https://github.com/ShravanKatkar/A.L.I.A.S.---Advanced-Logical-Interface-and-Assistant-System",
     visualTheme: {
