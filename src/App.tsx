@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import { useScrollProgress } from './hooks/useScrollProgress';
-import { useActiveSection } from './hooks/useActiveSection';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLenis } from './hooks/useLenis';
 import { Preloader } from './components/Preloader/Preloader';
 import { CustomCursor } from './components/CustomCursor/CustomCursor';
@@ -14,24 +12,53 @@ import { Experience } from './components/Experience/Experience';
 import { Certificates } from './components/Certificates/Certificates';
 import { Contact } from './components/Contact/Contact';
 
+// Zero-overhead direct DOM scroll progress indicator (prevents root component re-rendering)
+const ScrollProgressBar: React.FC = () => {
+  const barRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    let ticking = false;
+    const updateBar = () => {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = total > 0 ? Math.min(Math.max(window.scrollY / total, 0), 1) : 0;
+      if (barRef.current) {
+        barRef.current.style.transform = `scaleX(${progress})`;
+      }
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(updateBar);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    updateBar();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  return (
+    <div
+      ref={barRef}
+      className="fixed top-0 left-0 right-0 z-[9998] h-[2px] pointer-events-none origin-left will-change-transform"
+      style={{
+        background: 'linear-gradient(90deg, #FC6B2F, #FF8544)',
+        transform: 'scaleX(0)',
+        transformOrigin: '0 50%',
+        boxShadow: '0 0 10px rgba(252,107,47,0.6)',
+      }}
+    />
+  );
+};
+
 export const App: React.FC = () => {
   const [preloaderDone, setPreloaderDone] = useState(false);
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
 
-  // Initialize Lenis smooth scroll synced with GSAP
+  // Initialize Lenis smooth scroll synced with GSAP (zero RAF collision)
   useLenis();
-
-  const sectionIds = [
-    'hero',
-    'about',
-    'projects',
-    'experience',
-    'certificates',
-    'contact'
-  ];
-
-  const activeSection = useActiveSection(sectionIds);
-  const scrollProgress = useScrollProgress();
 
   return (
     <div className="relative min-h-screen bg-[#09090b] text-[#F4F1EA] font-sans selection:bg-[#FC6B2F]/30 selection:text-white">
@@ -53,20 +80,11 @@ export const App: React.FC = () => {
       {/* Interactive Developer Terminal / AI Shell */}
       <DeveloperTerminal />
 
-      {/* Jishnu Mondal Signature Top Scroll Progress Bar */}
-      <div
-        className="fixed top-0 left-0 right-0 z-[9998] h-[2px] pointer-events-none origin-left"
-        style={{
-          background: 'linear-gradient(90deg, #FC6B2F, #FF8544)',
-          transform: `scaleX(${scrollProgress})`,
-          transformOrigin: '0 50%',
-          boxShadow: '0 0 10px rgba(252,107,47,0.6)',
-        }}
-      />
+      {/* Zero-Lag Accelerated Top Scroll Progress Bar */}
+      <ScrollProgressBar />
 
-      {/* Main Navigation */}
+      {/* Main Navigation with localized active section state */}
       <Navbar
-        activeSection={activeSection}
         onOpenCommandPalette={() => setCommandPaletteOpen(true)}
       />
 

@@ -331,6 +331,9 @@ export const Projects: React.FC = () => {
     let state: number = -1;
     let fade = 1;
     let focus: string | null = null;
+    let screenDirty = true;
+    let lastBlink = -1;
+    let isVisible = false;
 
     function chipRow(list: string[], x0: number, y0: number) {
       if (!ctx) return y0;
@@ -355,7 +358,7 @@ export const Projects: React.FC = () => {
 
     function drawScreen(t: number) {
       if (!ctx) return;
-      fade = Math.min(1, fade + 0.05);
+      fade = Math.min(1, fade + 0.08);
       ctx.globalAlpha = 1;
       ctx.fillStyle = '#09090b';
       ctx.fillRect(0, 0, 1024, 683);
@@ -393,10 +396,12 @@ export const Projects: React.FC = () => {
         ctx.fillStyle = '#a1a1aa';
         ctx.font = '34px monospace';
         ctx.fillText(ME.role, 50, 250);
-        if (Math.floor(t * 2) % 2) {
+        const blink = Math.floor(t * 2) % 2;
+        if (blink) {
           ctx.fillStyle = '#FC6B2F';
           ctx.fillRect(50, 290, 16, 34);
         }
+        lastBlink = blink;
       }
       tex.needsUpdate = true;
     }
@@ -406,6 +411,7 @@ export const Projects: React.FC = () => {
       state = s;
       setActiveState(s);
       fade = 0;
+      screenDirty = true;
       focus = s >= 0 && s < 99 ? PROJECTS[s].part : s === 99 ? 'all' : null;
 
       const txt =
@@ -445,20 +451,26 @@ export const Projects: React.FC = () => {
       stInstances.push(st);
     });
 
-    // Ensure 3D canvas and big text are ONLY visible when inside #projects
+    // Ensure 3D canvas and big text are ONLY active and rendered when inside #projects
     const projectSectionVisibilityST = ScrollTrigger.create({
       trigger: container,
       start: 'top bottom',
       end: 'bottom top',
       onToggle: (self) => {
-        const isInside = self.isActive;
+        isVisible = self.isActive;
         if (canvas) {
-          canvas.style.opacity = isInside ? '1' : '0';
-          canvas.style.visibility = isInside ? 'visible' : 'hidden';
+          canvas.style.opacity = isVisible ? '1' : '0';
+          canvas.style.visibility = isVisible ? 'visible' : 'hidden';
         }
         if (big) {
-          big.style.opacity = isInside ? '0.08' : '0';
-          big.style.visibility = isInside ? 'visible' : 'hidden';
+          big.style.opacity = isVisible ? '0.08' : '0';
+          big.style.visibility = isVisible ? 'visible' : 'hidden';
+        }
+        if (isVisible) {
+          startAnimate();
+        } else if (animId) {
+          cancelAnimationFrame(animId);
+          animId = 0;
         }
       },
     });
@@ -466,11 +478,11 @@ export const Projects: React.FC = () => {
 
     // Initial check on load
     const rect = container.getBoundingClientRect();
-    const isInitiallyInView = rect.top < window.innerHeight && rect.bottom > 0;
-    canvas.style.opacity = isInitiallyInView ? '1' : '0';
-    canvas.style.visibility = isInitiallyInView ? 'visible' : 'hidden';
-    big.style.opacity = isInitiallyInView ? '0.08' : '0';
-    big.style.visibility = isInitiallyInView ? 'visible' : 'hidden';
+    isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+    canvas.style.opacity = isVisible ? '1' : '0';
+    canvas.style.visibility = isVisible ? 'visible' : 'hidden';
+    big.style.opacity = isVisible ? '0.08' : '0';
+    big.style.visibility = isVisible ? 'visible' : 'hidden';
 
     // ─── Scroll Keyframes & Camera Choreography ───
     const K = [
@@ -527,13 +539,24 @@ export const Projects: React.FC = () => {
 
     setState(-1);
 
-    // ─── Render Loop ───
+    // ─── Render Loop (Paused When Offscreen + Texture Updates Throttled) ───
     const animate = () => {
-      if (!isMounted) return;
+      if (!isMounted || !isVisible) {
+        animId = 0;
+        return;
+      }
       animId = requestAnimationFrame(animate);
 
       const t = clock.getElapsedTime();
-      drawScreen(t);
+      if (fade < 1 || screenDirty) {
+        drawScreen(t);
+        if (fade >= 1) screenDirty = false;
+      } else if (state < 0) {
+        const blink = Math.floor(t * 2) % 2;
+        if (blink !== lastBlink) {
+          drawScreen(t);
+        }
+      }
 
       Object.values(parts).forEach((o) => {
         const f = focus === 'all' || focus === o.id;
@@ -559,7 +582,15 @@ export const Projects: React.FC = () => {
       renderer.render(scene, camera);
     };
 
-    animate();
+    const startAnimate = () => {
+      if (!animId && isMounted && isVisible) {
+        animId = requestAnimationFrame(animate);
+      }
+    };
+
+    if (isVisible) {
+      startAnimate();
+    }
 
     return () => {
       isMounted = false;

@@ -269,6 +269,22 @@ export const GhostCursor: React.FC<GhostCursorProps> = ({
     const ro = new ResizeObserver(resize);
     ro.observe(parent);
 
+    let isIntersecting = true;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        isIntersecting = entry.isIntersecting;
+        if (isIntersecting) {
+          start();
+        } else if (raf != null) {
+          cancelAnimationFrame(raf);
+          raf = null;
+          loopRunning = false;
+        }
+      },
+      { threshold: 0 }
+    );
+    io.observe(parent);
+
     const target = new THREE.Vector2(0.5, 0.5);
     const velocity = new THREE.Vector2(0, 0);
     let opacity = 1;
@@ -282,7 +298,11 @@ export const GhostCursor: React.FC<GhostCursorProps> = ({
     const t0 = performance.now();
 
     const loop = () => {
-      if (!alive) return;
+      if (!alive || !isIntersecting) {
+        loopRunning = false;
+        raf = null;
+        return;
+      }
       if (!ready) { raf = requestAnimationFrame(loop); return; }
 
       const now = performance.now();
@@ -384,6 +404,7 @@ export const GhostCursor: React.FC<GhostCursorProps> = ({
       if (raf != null) cancelAnimationFrame(raf);
       window.removeEventListener('resize', resize);
       ro.disconnect();
+      io.disconnect();
       parent.removeEventListener('pointermove', onPointerMove as EventListener);
       parent.removeEventListener('pointerenter', onPointerEnter as EventListener);
       parent.removeEventListener('pointerleave', onPointerLeave as EventListener);

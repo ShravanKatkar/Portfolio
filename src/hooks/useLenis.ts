@@ -12,17 +12,18 @@ export function useLenis() {
   useEffect(() => {
     if (reducedMotion) return;
 
-    // Julian Vance & Jishnu Mondal calibrated buttery smooth scroll
+    // High-performance calibrated buttery smooth scroll (zero RAF collision)
     const isMobile = window.innerWidth < 768;
     const lenis = new Lenis({
-      lerp: isMobile ? 0.1 : 0.075,
-      duration: isMobile ? 1.0 : 1.4,
+      autoRaf: false,
+      lerp: isMobile ? 0.12 : 0.09,
+      duration: isMobile ? 0.9 : 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
       wheelMultiplier: 1.0,
-      touchMultiplier: 1.6,
+      touchMultiplier: 1.5,
     });
 
     lenis.on('scroll', ScrollTrigger.update);
@@ -32,7 +33,7 @@ export function useLenis() {
     };
 
     gsap.ticker.add(updateTicker);
-    gsap.ticker.lagSmoothing(1000, 16);
+    gsap.ticker.lagSmoothing(0);
 
     return () => {
       gsap.ticker.remove(updateTicker);

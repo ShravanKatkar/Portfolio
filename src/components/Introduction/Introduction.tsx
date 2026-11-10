@@ -19,7 +19,6 @@ export const Introduction: React.FC = () => {
   const overlayRef = useRef<HTMLDivElement | null>(null);
 
   const reducedMotion = useReducedMotion();
-  const [scrollProgress, setScrollProgress] = useState(0);
 
   // Philosophy background image path safe for GitHub Pages (/Portfolio/) and local Vite dev
   const bgImageSrc = `${import.meta.env.BASE_URL}images/philosophy-bg.jpg`;
@@ -81,7 +80,6 @@ export const Introduction: React.FC = () => {
   useEffect(() => {
     if (reducedMotion) {
       updateFrame(1);
-      setScrollProgress(1);
       return;
     }
 
@@ -108,7 +106,6 @@ export const Introduction: React.FC = () => {
       if (maxDistance <= 0) return;
       const top = track.getBoundingClientRect().top;
       const progress = clamp(-top / maxDistance, 0, 1);
-      setScrollProgress(progress);
       updateFrame(progress);
     };
 

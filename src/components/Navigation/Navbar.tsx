@@ -10,14 +10,19 @@ import {
   ExternalLink
 } from 'lucide-react';
 import { PERSONAL_INFO } from '../../data/socials';
+import { useActiveSection } from '../../hooks/useActiveSection';
+
+const SECTION_IDS = ['hero', 'about', 'projects', 'experience', 'certificates', 'contact'];
 
 interface NavbarProps {
-  activeSection: string;
+  activeSection?: string;
   onOpenCommandPalette: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ activeSection, onOpenCommandPalette }) => {
+export const Navbar: React.FC<NavbarProps> = ({ activeSection: propActiveSection, onOpenCommandPalette }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const detectedSection = useActiveSection(SECTION_IDS);
+  const activeSection = propActiveSection || detectedSection;
 
   const navItems = [
     { label: 'Home', href: '#hero', id: 'hero' },
