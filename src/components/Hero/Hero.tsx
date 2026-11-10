@@ -80,7 +80,7 @@ export const Hero: React.FC = () => {
         color="#FC6B2F"
         brightness={0.8}
         edgeIntensity={0}
-        trailLength={14}
+        trailLength={24}
         inertia={0.4}
         grainIntensity={0.025}
         bloomStrength={0.08}

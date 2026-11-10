@@ -113,7 +113,15 @@ const STRAIGHT_ALPHA_SHADER = {
   vertexShader: `varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }`,
   fragmentShader: `
     uniform sampler2D tDiffuse; varying vec2 vUv;
-    void main(){ vec4 c=texture2D(tDiffuse,vUv); float a=max(c.a,1e-5); gl_FragColor=vec4(clamp(c.rgb/a,0.0,1.0),c.a); }
+    void main(){
+      vec4 c = texture2D(tDiffuse, vUv);
+      if (c.a <= 0.005) {
+        gl_FragColor = vec4(0.0);
+        return;
+      }
+      vec3 straight = c.rgb / max(c.a, 1e-4);
+      gl_FragColor = vec4(clamp(straight, 0.0, 1.0), c.a);
+    }
   `,
 };
 
@@ -181,7 +189,7 @@ export const GhostCursor: React.FC<GhostCursorProps> = ({
 
     const history: THREE.Vector2[] = Array.from(
       { length: trailLen },
-      () => new THREE.Vector2(0.5, 0.5)
+      () => new THREE.Vector2(-10.0, -10.0)
     );
     let historyHead = 0;
 
@@ -191,9 +199,9 @@ export const GhostCursor: React.FC<GhostCursorProps> = ({
       uniforms: {
         iTime: { value: 0 },
         iResolution: { value: new THREE.Vector3(1, 1, 1) },
-        iMouse: { value: new THREE.Vector2(0.5, 0.5) },
+        iMouse: { value: new THREE.Vector2(-10.0, -10.0) },
         iPrevMouse: { value: history.map((v) => v.clone()) },
-        iOpacity: { value: 1 },
+        iOpacity: { value: 0 },
         iScale: { value: 1 },
         iBaseColor: {
           value: new THREE.Vector3(baseCol.r, baseCol.g, baseCol.b),
@@ -285,10 +293,10 @@ export const GhostCursor: React.FC<GhostCursorProps> = ({
     );
     io.observe(parent);
 
-    const target = new THREE.Vector2(0.5, 0.5);
+    const target = new THREE.Vector2(-10.0, -10.0);
     const velocity = new THREE.Vector2(0, 0);
-    let opacity = 1;
-    let lastActive = performance.now();
+    let opacity = 0;
+    let lastActive = 0;
     let interacting = false;
     let loopRunning = false;
     let raf: number | null = null;
