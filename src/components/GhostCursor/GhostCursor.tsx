@@ -67,8 +67,8 @@ const FRAG = `
     vec2 r = vec2(fbm(p*iScale + q*1.5 + iTime*0.15), fbm(p*iScale + q*1.5 + vec2(8.3,2.8) + iTime*0.15));
     float smoke  = fbm(p*iScale + r*0.8);
     float radius = 0.5 + 0.3 / iScale;
-    float dist   = 1.0 - smoothstep(0.0, radius * activity, length(p - mp));
-    float alpha  = pow(smoke, 2.5) * dist;
+    float dist   = 1.0 - smoothstep(0.0, max(radius * activity, 0.001), length(p - mp));
+    float alpha  = pow(max(smoke, 0.0), 2.5) * dist;
     vec3 c1 = tint1(iBaseColor), c2 = tint2(iBaseColor);
     vec3 col = mix(c1, c2, sin(iTime*0.5)*0.5+0.5);
     return vec4(col * alpha * intensity, alpha * intensity);

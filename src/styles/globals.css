@@ -216,6 +216,18 @@ body {
   box-shadow: 0 8px 32px rgba(252, 107, 47, 0.2);
 }
 
+@keyframes reveal-up {
+  0% {
+    transform: translateY(100%);
+  }
+  50% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
