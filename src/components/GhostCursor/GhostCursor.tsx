@@ -108,37 +108,20 @@ const GRAIN_SHADER = {
   `,
 };
 
-const STRAIGHT_ALPHA_SHADER = {
-  uniforms: { tDiffuse: { value: null as THREE.Texture | null } },
-  vertexShader: `varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }`,
-  fragmentShader: `
-    uniform sampler2D tDiffuse; varying vec2 vUv;
-    void main(){
-      vec4 c = texture2D(tDiffuse, vUv);
-      if (c.a <= 0.005) {
-        gl_FragColor = vec4(0.0);
-        return;
-      }
-      vec3 straight = c.rgb / max(c.a, 1e-4);
-      gl_FragColor = vec4(clamp(straight, 0.0, 1.0), c.a);
-    }
-  `,
-};
-
 export const GhostCursor: React.FC<GhostCursorProps> = ({
   className = '',
   style = {},
   trailLength = 35,
   inertia = 0.4,
-  grainIntensity = 0.025,
-  bloomStrength = 0.08,
-  bloomRadius = 0.8,
-  bloomThreshold = 0.04,
-  brightness = 0.75,
+  grainIntensity = 0.02,
+  bloomStrength = 0.06,
+  bloomRadius = 0.6,
+  bloomThreshold = 0.08,
+  brightness = 0.8,
   color = '#FC6B2F',
   mixBlendMode = 'screen',
   edgeIntensity = 0,
-  maxDevicePixelRatio = 0.5,
+  maxDevicePixelRatio = 1.0,
   fadeDelayMs = 800,
   fadeDurationMs = 1200,
   zIndex = 5,
@@ -168,12 +151,12 @@ export const GhostCursor: React.FC<GhostCursorProps> = ({
       'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
     const renderer = new THREE.WebGLRenderer({
-      antialias: !isTouchDevice,
+      antialias: true,
       alpha: true,
       depth: false,
       stencil: false,
       powerPreference: 'high-performance',
-      premultipliedAlpha: false,
+      premultipliedAlpha: true,
       preserveDrawingBuffer: false,
     });
     renderer.setClearColor(0x000000, 0);
@@ -238,7 +221,6 @@ export const GhostCursor: React.FC<GhostCursorProps> = ({
       },
     });
     composer.addPass(grainPass);
-    composer.addPass(new ShaderPass(STRAIGHT_ALPHA_SHADER));
 
     let ready = false;
     const resize = () => {
@@ -250,12 +232,12 @@ export const GhostCursor: React.FC<GhostCursorProps> = ({
 
       const rawDPR = Math.min(window.devicePixelRatio || 1, maxDevicePixelRatio);
       const totalPx = w * h * rawDPR * rawDPR;
-      const maxPx = isTouchDevice ? 900000 : 1300000;
+      const maxPx = isTouchDevice ? 1500000 : 2500000;
       const dpr =
         rawDPR *
         (totalPx <= maxPx
           ? 1
-          : Math.max(0.5, Math.min(1, Math.sqrt(maxPx / totalPx))));
+          : Math.max(0.75, Math.min(1, Math.sqrt(maxPx / totalPx))));
 
       renderer.setPixelRatio(dpr);
       renderer.setSize(w, h, false);
