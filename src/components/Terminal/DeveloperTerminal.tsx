@@ -46,7 +46,7 @@ export const DeveloperTerminal: React.FC = () => {
         newLogs.push({
           id: (Date.now() + 1).toString(),
           type: 'out',
-          text: `AVAILABLE COMMANDS:\n  • projects      - List all engineered AI systems\n  • alias         - Flagship desktop assistant details\n  • cinesense     - Cinema recommendation & ReAct agent\n  • codeguard     - Multi-agent PR review & QLoRA model\n  • vaultai       - Privacy-first offline RAG suite\n  • stack         - Inspect core programming & AI framework stack\n  • contact       - Direct contact channels & verified coordinates\n  • resume        - Trigger Curriculum Vitae download\n  • sudo hire shravan - Fast-track interview & collaboration offer\n  • clear         - Flush terminal log buffer`
+          text: `AVAILABLE COMMANDS:\n  • projects      - List all engineered AI systems\n  • alias         - Flagship desktop assistant details\n  • cinesense     - Cinema recommendation & ReAct agent\n  • civicmind     - Multimodal sanitation worker safety platform\n  • codeguard     - Multi-agent PR review & QLoRA model\n  • vaultai       - Privacy-first offline RAG suite\n  • stack         - Inspect core programming & AI framework stack\n  • contact       - Direct contact channels & verified coordinates\n  • resume        - Trigger Curriculum Vitae download\n  • sudo hire shravan - Fast-track interview & collaboration offer\n  • clear         - Flush terminal log buffer`
         });
         break;
 
@@ -70,7 +70,15 @@ export const DeveloperTerminal: React.FC = () => {
         newLogs.push({
           id: (Date.now() + 1).toString(),
           type: 'out',
-          text: `PROJECT CINESENSE:\n  • 2-stage hybrid recsys over 10K+ titles fusing ALS (64 factors) with kNN embeddings\n  • Autonomous Groq Llama 3.3 70B ReAct Agent with 0% hallucination whitelist grounding\n  • Dual-tier Redis 7 + PostgreSQL 16 pgvector cache\n  • Live Demo: https://cinesense-app.onrender.com/`
+          text: `PROJECT CINESENSE — Hybrid AI Movie Recommendation & Grounded RAG Platform:\n  • Stack: Python, FastAPI, React, PyTorch, Implicit, Groq, PostgreSQL, pgvector, Redis, Docker\n  • RecSys Benchmarks: +221.8% NDCG@10 (0.0308 to 0.0991), +307.5% Recall@10 (0.0332 to 0.1353) across 561 users\n  • Low Latency: 97.5% lookup cut (29.02 ms to 0.72 ms), 97.2% cold-start cut (1,189.9 ms to 33.0 ms) via CatalogStore\n  • Grounded ReAct Agent: Groq Llama-3.3-70B with 100% candidate-ID validation and 74.06% Hit@5 across 320 queries\n  • 50-test benchmark suite (100% pass rate) + dual-tier caching (Redis + pgvector)\n  • Live Demo: https://cinesense-app.onrender.com/`
+        });
+        break;
+
+      case 'civicmind':
+        newLogs.push({
+          id: (Date.now() + 1).toString(),
+          type: 'out',
+          text: `PROJECT CIVICMIND AI — Multimodal Sanitation Worker Safety Platform:\n  • Stack: Python, FastAPI, React, YOLOv8, BLIP, Whisper, ChromaDB\n  • Vision Latency: 59.7% hazard assessment cut (5.20 s to 2.10 s) on CPU via BLIP optimization & PyTorch inference mode\n  • Vector RAG: LRU cache reducing repeated-query latency from 216.9 ms to <0.01 ms with 100% Hit@5 across 35 queries\n  • Validation: 33 backend tests (100% pass, 66% coverage), 150 scenarios (96% pass), 25/25 risk-engine cases\n  • Deployment: 20-endpoint FastAPI backend & multilingual supervisor dashboard\n  • Live Demo: https://civic-mind-9uve.vercel.app/`
         });
         break;
 

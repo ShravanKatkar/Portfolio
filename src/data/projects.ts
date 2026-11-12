@@ -125,32 +125,31 @@ export const FEATURED_PROJECTS: Project[] = [
   {
     id: "civicmind",
     number: "03",
-    title: "CivicMind AI — Worker Safety Intelligence Platform",
+    title: "CivicMind AI — Multimodal Sanitation Worker Safety Platform",
     badge: "Hero Project",
     period: "Jan 2026 – Feb 2026",
-    tagline: "Computer vision and multimodal reasoning platform for sanitation worker workplace hazard assessment.",
-    description: "An AI-driven safety monitoring platform detecting environmental and physical hazards for sanitation workers using computer vision and multimodal reasoning.",
-    problem: "Frontline municipal and sanitation workers frequently encounter hazardous chemicals, biohazards, and toxic working conditions without automated real-time safety warnings.",
-    solution: "Combined YOLOv8 object detection and BLIP scene understanding with a deterministic risk-scoring engine for workplace hazard assessment. Designed location-aware risk reporting, multilingual alerts, and a supervisor dashboard for field monitoring.",
+    tagline: "Multimodal sanitation worker safety platform combining YOLOv8 hazard detection, BLIP contextual reasoning, and LRU-cached RAG.",
+    description: "A multimodal worker safety intelligence platform detecting environmental and physical hazards on CPU via optimized dual-vision reasoning (YOLOv8 & BLIP) coupled with sub-millisecond LRU-cached RAG retrieval and a 20-endpoint FastAPI architecture.",
+    problem: "Frontline municipal and sanitation workers frequently encounter hazardous chemicals, biohazards, and toxic working conditions without automated real-time safety warnings, while standard multimodal vision pipelines are too slow for real-time edge CPU deployment.",
+    solution: "Engineered an end-to-end multimodal hazard perception pipeline with BLIP caption-pass optimization, image downscaling, and PyTorch inference mode. Added LRU-cached vector RAG retrieval with 100% Hit@5 and expanded unit and integration test coverage across 150 scenario validations.",
     architectureWorkflow: [
       "Worker captures photo or submits voice note via PWA or mobile browser",
       "YOLOv8 object detection identifies physical hazards and obstacles in frame",
-      "BLIP scene understanding models interpret environmental context and risk tier",
-      "Deterministic Risk-Scoring Engine categorizes threat level (Low, Moderate, Critical)",
-      "Location-aware risk reporting dispatches multilingual alerts to field supervisors",
-      "Supervisor dashboard aggregates field telemetry for proactive occupational monitoring"
+      "BLIP scene understanding models interpret environmental context and risk tier with PyTorch inference mode",
+      "Deterministic Risk-Scoring Engine categorizes threat level (Low, Moderate, Critical) across 25 validated cases",
+      "LRU-cached RAG retrieval delivers safety protocol guidelines in <0.01 ms",
+      "Location-aware risk reporting dispatches multilingual alerts to field supervisors via 20-endpoint FastAPI backend"
     ],
     features: [
-      "Combined YOLOv8 object detection and BLIP scene understanding with a deterministic risk-scoring engine for workplace hazard assessment.",
-      "Designed location-aware risk reporting, multilingual alerts, and a supervisor dashboard for field monitoring.",
-      "Real-time hazard detection across 7 risk categories with custom logic validation.",
-      "Voice-based on-site hazard reporting for hands-busy frontline workers.",
-      "Mobile-accessible local network deployment engineered for low-bandwidth environments."
+      "Reduced end-to-end multimodal hazard assessment latency by 59.7% (5.20 s to 2.10 s) on CPU through BLIP caption-pass optimization, image downscaling, and PyTorch inference mode.",
+      "Optimized RAG retrieval using an LRU cache, reducing repeated-query latency from 216.9 ms to under 0.01 ms on cache hits while maintaining 100% Hit@5 across 35 queries.",
+      "Expanded backend tests from 2 to 33 (100% pass, 66% coverage); validated 150 scenarios (96% pass) and 25/25 risk-engine cases, alongside a 20-endpoint FastAPI backend and multilingual supervisor dashboard."
     ],
     metrics: [
-      { value: "YOLOv8 + BLIP", label: "Dual Vision Engine" },
-      { value: "7", label: "Risk Categories Detected" },
-      { value: "Multilingual", label: "Real-Time Field Alerts" }
+      { value: "59.7%", label: "CPU Latency Cut (5.2s → 2.1s)" },
+      { value: "<0.01 ms", label: "RAG Cache Hit Latency" },
+      { value: "100%", label: "Hit@5 across 35 Queries" },
+      { value: "33/33", label: "Tests Passed (100% Pass)" }
     ],
     technologies: [
       "Python",
@@ -158,9 +157,8 @@ export const FEATURED_PROJECTS: Project[] = [
       "React",
       "YOLOv8",
       "BLIP",
-      "SQLite",
-      "LangChain",
-      "PWA"
+      "Whisper",
+      "ChromaDB"
     ],
     githubUrl: "https://github.com/ShravanKatkar",
     liveUrl: "https://civic-mind-9uve.vercel.app/",
@@ -172,44 +170,42 @@ export const FEATURED_PROJECTS: Project[] = [
   {
     id: "cinesense",
     number: "04",
-    title: "CineSense — Hybrid AI Movie Discovery & Grounded RAG Assistant",
+    title: "CineSense — Hybrid AI Movie Recommendation & Grounded RAG Platform",
     badge: "Hero Project",
-    period: "September 2026",
-    tagline: "Cinema intelligence platform across 10,000+ titles combining 2-stage hybrid recommendation with a 0% hallucination ReAct agent.",
-    description: "A full-stack cinema intelligence platform featuring a 2-stage hybrid recommendation pipeline (5 algorithmic tiers fused via RRF & MMR) coupled with an autonomous ReAct AI Agent with a 0% hallucination guarantee.",
-    problem: "Standard collaborative filtering suffers from cold-start issues and cannot explain recommendations conversational, while ungrounded LLMs hallucinate titles and metadata.",
-    solution: "Combined ALS Matrix Factorization (64 latent factors), Item-Item Collaborative Filtering, and Neural Semantic Vector Embeddings into a candidate pool fused by RRF and MMR, strictly whitelisting candidate movies for an autonomous Groq Llama 3.3 70B ReAct agent.",
+    period: "May 2026 – Jun 2026",
+    tagline: "Hybrid recommendation and grounded ReAct assistant across 10,000+ titles with calibrated RRF, MMR, and sub-millisecond lookup.",
+    description: "A production-grade cinema discovery platform fusing collaborative filtering (Implicit ALS) and neural embeddings via calibrated Reciprocal Rank Fusion & MMR, backed by an in-memory CatalogStore and an autonomous 0% hallucination Groq Llama-3.3-70B ReAct agent.",
+    problem: "Traditional collaborative filtering suffers from cold-start latency and poor top-N ranking metrics, while ungrounded LLM chatbots hallucinate nonexistent movies and invalid metadata.",
+    solution: "Implemented a 2-stage hybrid recommendation pipeline with calibrated Reciprocal Rank Fusion (RRF) and Maximal Marginal Relevance (MMR) re-ranking, an in-memory CatalogStore achieving sub-millisecond item lookups, and a candidate-whitelisted Groq Llama-3.3-70B ReAct assistant backed by a 50-test benchmark suite.",
     architectureWorkflow: [
-      "User preferences & conversational query ingested by FastAPI backend",
-      "Candidate Generation: ALS Matrix Factorization + Neural kNN Embeddings + TF-IDF",
-      "Reciprocal Rank Fusion (RRF) combines scores; Maximal Marginal Relevance (MMR) diversifies output",
-      "PostgreSQL 16 + pgvector provides high-dimension vector similarity lookup",
-      "Autonomous ReAct agent (Groq Llama 3.3 70B) explains recommendations with candidate whitelist grounding",
-      "Redis 7 dual-tier caching layer returns sub-millisecond cached responses"
+      "User preferences & conversational query ingested by high-throughput FastAPI backend",
+      "Candidate Generation: Implicit ALS Matrix Factorization (64 latent factors) + Neural kNN Embeddings",
+      "Reciprocal Rank Fusion (RRF) combines rank scores; Maximal Marginal Relevance (MMR) diversifies output",
+      "In-memory CatalogStore executes movie metadata lookups in 0.72 ms",
+      "Autonomous ReAct agent (Groq Llama-3.3-70B) explains recommendations with candidate whitelist grounding",
+      "Dual-tier Redis + PostgreSQL pgvector caching layer returns sub-millisecond responses with 100% candidate validation"
     ],
     features: [
-      "Two-stage recsys: ALS Matrix Factorization (64 latent factors), Item-Item CF, Neural Semantic Embeddings (kNN), TF-IDF, and Bayesian Popularity.",
-      "Candidate ranking fused via Reciprocal Rank Fusion (RRF) and diversified with Maximal Marginal Relevance (MMR).",
-      "Autonomous ReAct agent powered by Groq Llama 3.3 70B with candidate whitelist grounding to guarantee zero hallucinations.",
-      "Dual-tier caching with Redis 7 & in-memory TTL plus live telemetry feedback loop.",
-      "Built with React 19, Vite, Tailwind CSS, FastAPI Python 3.12, and PostgreSQL 16 + pgvector."
+      "Improved hybrid recommendation NDCG@10 by 221.8% (0.0308 to 0.0991) and Recall@10 by 307.5% (0.0332 to 0.1353) across 561 temporal-split users using calibrated Reciprocal Rank Fusion and MMR re-ranking.",
+      "Reduced movie lookup latency by 97.5% (29.02 ms to 0.72 ms) and cold-start recommendation latency by 97.2% (1,189.9 ms to 33.0 ms) through an in-memory CatalogStore.",
+      "Developed a grounded ReAct movie assistant using Groq Llama-3.3-70B and candidate-whitelist validation, achieving 100% candidate-ID validation and 74.06% Hit@5 across 320 queries; implemented dual-tier caching and a 50-test benchmark suite (100% pass rate)."
     ],
     metrics: [
-      { value: "10K+", label: "Movie Titles" },
-      { value: "5", label: "Ranking Tiers" },
-      { value: "64", label: "Latent Factors" },
-      { value: "0%", label: "Hallucination Guarantee" }
+      { value: "+221.8%", label: "NDCG@10 Improvement" },
+      { value: "+307.5%", label: "Recall@10 Improvement" },
+      { value: "0.72 ms", label: "CatalogStore Lookup Latency" },
+      { value: "100%", label: "Candidate-ID Validation" }
     ],
     technologies: [
+      "Python",
       "FastAPI",
       "React",
-      "Python",
+      "PyTorch",
+      "Implicit",
+      "Groq",
       "PostgreSQL",
       "pgvector",
       "Redis",
-      "Groq",
-      "LangChain",
-      "RAG",
       "Docker"
     ],
     githubUrl: "https://github.com/ShravanKatkar/CineSense",
