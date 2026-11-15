@@ -46,7 +46,7 @@ export const DeveloperTerminal: React.FC = () => {
         newLogs.push({
           id: (Date.now() + 1).toString(),
           type: 'out',
-          text: `AVAILABLE COMMANDS:\n  • projects      - List all engineered AI systems\n  • alias         - Flagship desktop assistant details\n  • cinesense     - Cinema recommendation & ReAct agent\n  • civicmind     - Multimodal sanitation worker safety platform\n  • codeguard     - Multi-agent PR review & QLoRA model\n  • vaultai       - Privacy-first offline RAG suite\n  • stack         - Inspect core programming & AI framework stack\n  • contact       - Direct contact channels & verified coordinates\n  • resume        - Trigger Curriculum Vitae download\n  • sudo hire shravan - Fast-track interview & collaboration offer\n  • clear         - Flush terminal log buffer`
+          text: `AVAILABLE COMMANDS:\n  • projects      - List all engineered AI systems\n  • alias         - Flagship desktop assistant details\n  • cinesense     - Cinema recommendation & ReAct agent\n  • civicmind     - Multimodal sanitation worker safety platform\n  • codeguard     - Multi-agent PR review & QLoRA model\n  • vaultai       - Privacy-first offline RAG suite\n  • stack         - Inspect core programming & AI framework stack\n  • education     - Academic credentials & university records\n  • contact       - Direct contact channels & verified coordinates\n  • resume        - Trigger Curriculum Vitae download\n  • sudo hire shravan - Fast-track interview & collaboration offer\n  • clear         - Flush terminal log buffer`
         });
         break;
 
@@ -94,7 +94,7 @@ export const DeveloperTerminal: React.FC = () => {
         newLogs.push({
           id: (Date.now() + 1).toString(),
           type: 'out',
-          text: `PROJECT VAULTAI:\n  • 100% on-device offline RAG: Zero bytes transmitted to cloud\n  • Ingestion for PDF, TXT, and Markdown with recursive chunking\n  • ChromaDB vector index with local Ollama runtime (Llama 3, Phi-3, Mistral)\n  • Live Demo: https://vault-ai-gamma.vercel.app/`
+          text: `PROJECT VAULTAI — Offline RAG Document Intelligence Platform:\n  • Stack: Python, FastAPI, LangChain, ChromaDB, Ollama, React\n  • 100% on-device offline RAG: Zero bytes transmitted to cloud\n  • Hybrid Retrieval (RRF + reranking): 0.9538 Hit@1 & 0.9769 MRR over 195 evaluations\n  • Automated Testing: 26/26 tests passing in regression suite\n  • Live Demo: https://vault-ai-gamma.vercel.app/`
         });
         break;
 
@@ -102,7 +102,15 @@ export const DeveloperTerminal: React.FC = () => {
         newLogs.push({
           id: (Date.now() + 1).toString(),
           type: 'out',
-          text: `CORE TECHNICAL STACK:\n  • AI & ML: Generative AI, LLMs, RAG, AI Agents, Prompt Engineering\n  • Frameworks: LangChain, LangGraph, PyTorch, ChromaDB, Hugging Face, Groq\n  • Languages: Python (Expert), Java, C/C++, SQL, TypeScript\n  • Backend: FastAPI, Uvicorn, Spring Boot, WebSockets, REST APIs\n  • Frontend: React 19, Tailwind CSS, Vite, Framer Motion\n  • Storage: PostgreSQL (pgvector), Redis, ChromaDB, SQLite, MySQL`
+          text: `CORE TECHNICAL STACK:\n  • Languages: Python, C, SQL, JavaScript\n  • AI & ML: Machine Learning, Generative AI, LLMs, RAG, Embeddings, AI Agents, Prompt Engineering, Computer Vision, Hugging Face, Recommender Systems, LLM Evaluation\n  • Frameworks: FastAPI, LangChain, LangGraph, React, PyTorch, YOLOv8, Ollama\n  • Backend & DB: REST APIs, JSON, WebSockets, ChromaDB, FAISS, PostgreSQL, Redis, SQLite\n  • Tools: Git, GitHub, Docker, Pytest, Postman`
+        });
+        break;
+
+      case 'education':
+        newLogs.push({
+          id: (Date.now() + 1).toString(),
+          type: 'out',
+          text: `ACADEMIC CREDENTIALS:\n  • Degree: Bachelor of Science (B.Sc.) in Computer Science\n  • College: JSPM's Rajarshi Shahu Commerce and Science College, Pune\n  • University: Savitribai Phule Pune University (SPPU)\n  • Standing: 8.73 CGPA (Expected Graduation: 2027)\n  • HSC: Shree Samarth Uchha Madhyamik Vidyalay, Pune (76.17%)`
         });
         break;
 

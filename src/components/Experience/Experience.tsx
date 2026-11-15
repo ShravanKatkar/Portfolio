@@ -6,28 +6,29 @@ export const Experience: React.FC = () => {
     {
       period: '2024 — Present',
       context: 'Independent / AI Engineering',
-      role: 'AI Engineer & Generative AI Developer',
+      role: 'AI Developer & Generative AI Engineer',
       description:
-        'Architecting production-ready RAG architectures, multi-agent LangGraph swarms, and local LLM inference engines. Bridging theoretical machine intelligence with scalable, low-latency backend engineering.',
+        'Building production-style Generative AI and machine learning systems, including RAG pipelines, LLM integrations, and computer vision applications.',
       bullets: [
-        'Shipped VaultAI offline RAG engine achieving 0.9538 Hit@1 and 0.9769 MRR retrieval accuracy on enterprise benchmarks.',
-        'Engineered A.L.I.A.S. desktop assistant integrating RAG, voice interaction, and OS automation evaluated across 274 benchmark test cases (98.1% accuracy, 90.4% Hit@5).',
-        'Created CodeGuard multi-agent pull request review system using QLoRA fine-tuned vulnerability detectors.',
+        'Built VaultAI offline RAG platform with a FastAPI REST API, local LLM inference, automated ingestion, persistent ChromaDB, and hybrid retrieval (0.9538 Hit@1 and 0.9769 MRR over 195 evaluations; 26/26 tests passing).',
+        'Engineered A.L.I.A.S. desktop AI assistant with LLM chat, RAG, voice interaction, memory, and desktop automation evaluated across 274 cases (98.1% response-quality, 98.1% automation accuracy, 90.4% Hit@5, 0 false positives).',
+        'Developed CineSense hybrid movie recommendation (+221.8% NDCG@10, +307.5% Recall@10 across 561 users) with in-memory CatalogStore (0.72 ms lookup) and grounded Groq Llama-3.3-70B ReAct assistant (100% candidate-ID validation).',
+        'Created CivicMind AI multimodal safety platform cutting hazard assessment latency by 59.7% on CPU, with LRU-cached RAG (<0.01 ms hit, 100% Hit@5 across 35 queries), and 33 backend tests (100% pass, 150 scenarios).'
       ],
-      skills: ['Python', 'FastAPI', 'LangGraph', 'ChromaDB', 'Ollama', 'React 19', 'Tailwind CSS'],
+      skills: ['Python', 'FastAPI', 'LangChain', 'LangGraph', 'PyTorch', 'ChromaDB', 'Ollama', 'React', 'Docker'],
     },
     {
-      period: '2024 — 2027 (Expected)',
-      context: 'SPPU, Pune',
-      role: 'B.Sc. in Computer Science',
+      period: 'Expected 2027',
+      context: 'SPPU / JSPM Pune',
+      role: 'Bachelor of Science (B.Sc.) in Computer Science',
       description:
-        'Pursuing Bachelor of Science in Computer Science at JSPM’s Rajarshi Shahu College (Savitribai Phule Pune University) with a strong focus on algorithmic efficiency, machine learning, and systems design.',
+        'Pursuing Bachelor of Science in Computer Science at JSPM’s Rajarshi Shahu Commerce and Science College, affiliated with Savitribai Phule Pune University (SPPU).',
       bullets: [
-        'Maintaining an 8.73 CGPA academic record across computer science fundamentals.',
-        'Core coursework: Advanced Data Structures & Algorithms, Operating Systems, Database Management Systems, Theory of Computation.',
-        'Elected technical lead for university AI innovation and machine intelligence symposiums.',
+        'Academic Standing: Maintaining an 8.73 CGPA across computer science foundations, algorithms, operating systems, and database management.',
+        'Higher Secondary Certificate (HSC): 76.17% at Shree Samarth Uchha Madhyamik Vidyalay, Pune.',
+        'Practical Focus: Local LLM orchestration, hybrid vector-keyword retrieval pipelines, and deterministic AI evaluation frameworks.'
       ],
-      skills: ['Algorithms', 'Data Structures', 'Database Systems', 'Linear Algebra', 'C++', 'Java'],
+      skills: ['Python', 'C', 'SQL', 'Data Structures', 'Database Systems', 'Algorithms'],
     },
   ];
 
